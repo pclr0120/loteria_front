@@ -1,0 +1,38 @@
+<app-principal></app-principal>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column loteriaback">
+  <main role="main" class="inner cover">
+    <div class="gradient">
+      <div class="container">
+        <h1 class="cover-heading" style=" margin-bottom: 0px;padding-top: 13px;">Registrarse</h1>
+        <h5 style=" font-family: 'Open Sans'; ">Es gratis</h5>
+
+        <form [formGroup]="RegistroUsuarioForm" (ngSubmit)="registrar()">
+          <input class="registro" type="text" placeholder="Nombre de usuario" formControlName="userName" style=" width: 50%; "><br>
+          <input class="registro" type="email" placeholder="Correo electrónico" formControlName="correo" style=" width: 70%; "><br>
+          <label class="registro_lbl">Fecha de Nacimiento</label><br>
+            <input type="date" class="form-control" name="fechaNacimiento" formControlName="fechaNacimiento">
+
+          <input type="radio" class="form-check-input" formControlName="genero" value="H" checked> Hombre
+          <input type="radio" class="form-check-input" formControlName="genero" value="M" style=" margin-left: 15px;margin-bottom: 15px; "> Mujer<br>
+          <input class="registro"  type="password" placeholder="Nueva contraseña" formControlName="contra" style=" width: 70%; "><br>
+          <input class="registro" type="password" placeholder="Repita su contraseña" formControlName="contraconf"style=" width: 70%; "><br>
+         <p class="politicas">
+           Al hacer clic en Registrarse usted está aceptando
+           las <a href="#">Reglas de usuario</a>, así como nuestra <a href="#">Poítica de 
+           datos</a>.
+         </p> 
+         <button type="button" class="btn btn-primary" (click)="registrar()" >Registrar</button>
+         
+         </form>
+      </div>
+    </div>
+  </main>
+</div>
+<footer class="mastfoot mt-auto footer_log">
+    <div class="inner">
+     <br><img src="../../assets/Resources/Logo401.png" alt="401 Software" style="width: 45px"><br>
+      Ingeniería de Software <br>
+      Grupo 401 <br>
+      2018® Todos los derechos reservados.
+    </div>
+  </footer>

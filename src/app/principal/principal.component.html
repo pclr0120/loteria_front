@@ -1,0 +1,51 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+</style>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="../assets/Resources/LoteriaOnline_white.png" alt="Lotería Online" style=" width: 90px; ">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item space">  
+        <img src="../assets/Resources/user.png" alt="Usuario:" style=" width: 20%;margin-top: 8px;">
+        <label class="usuario">{{userName}}</label>
+      </li>
+      <li>
+        <img src="../assets/Resources/coins.png" alt="Usuario:" style=" width: 13%;margin-top: 16px; ">
+        <label class="usuario">{{paypal}}</label>
+      </li>
+      <li>
+        <form [formGroup]="LoginForm" (ngSubmit)="iniciarsesion()">
+          <table>
+            <tr>
+              <td><label class="login_form_lbl" for="userName">Nombre de usuario</label></td>
+              <td style=" padding-left: 14px; "><label class="login_form_lbl" for="pass_log">Contraseña</label></td>
+            </tr>
+            <tr>
+              <td><input class="login_form_txt" type="text" name="userName" formControlName="userName"  ></td>
+              <td style=" padding-left: 14px; "><input class="login_form_txt" type="password"  name="contra" formControlName="contra"></td>
+              <button class="btn_log" (click)="iniciarsesion()"> ENTRAR </button>
+              
+            </tr>
+          </table>
+        </form>
+      </li>
+      <li class="nav-item dropdown" style=" text-align: right; ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="../assets/Resources/config.png" alt="Configuración" style=" width: 13%;margin-top: 16px; ">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Ir a perfil</a>
+          <a class="dropdown-item" href="#">Estadísticas</a>
+          <a class="dropdown-item" href="#">Cerrar sesión</a>
+        </div>
+      </li>
+    </ul>    
+  </div>
+</nav>
