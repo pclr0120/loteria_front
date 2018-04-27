@@ -1,0 +1,38 @@
+.back {
+    background-image: url(../../assets/Resources/fondo_lobby.jpg);
+    background-position: bottom;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.tabla {
+    
+    border: 0px;
+    width: 700px;
+    height: auto;
+    min-height: 100%;
+    margin-left: 1%;
+    margin-top: 7%;
+}
+
+.alto {
+    min-height: 538px;
+}
+
+.cabecera {
+    text-align: center; 
+    vertical-align: middle;
+}
+
+th, td {
+    padding-right: 15px;
+    color: white;
+}
+
+btn_iniciar {
+    border: 0px;
+    width: 480px;
+    height: 565px;
+    margin-left: 60%;
+    margin-top: 7%;
+}

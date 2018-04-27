@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { SalaComponent } from './sala/sala.component';
+import { LobbyComponent } from './lobby/lobby.component';
 
 import { HttpModule }    from '@angular/http';
 import { Headers, Http, Response } from '@angular/http';
@@ -17,9 +18,11 @@ import { ServiciologinService } from './servicios/serviciologin.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
+
 export const appRoutes: Routes = [
   { path:'' ,component : LoginComponent },
   { path:'sala' ,component : SalaComponent },
+  { path:'lobby', component : LobbyComponent}
   
   
   
@@ -30,7 +33,8 @@ export const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    SalaComponent
+    SalaComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule, FormsModule,
