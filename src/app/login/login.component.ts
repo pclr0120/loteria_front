@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('Identity', JSON.stringify(this.identity))
         if (this.identity != "Undefined") {
           //Si hay logeado se va a salas
-          this.router.navigate(['/sala'])
+          this.router.navigate(['/lobby'])
         }
       },
       error => {
