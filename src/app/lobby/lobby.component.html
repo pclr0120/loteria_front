@@ -10,7 +10,7 @@
         <div class="col">
           <div class="container">
             <table class="table table-hover table-sm">
-              <thead class="thead-dark" >
+              <thead class="thead-dark">
                 <tr>
                   <th class="cabecera" scope="col">ID</th>
                   <th class="cabecera" scope="col">Nombre de la sala</th>
@@ -21,17 +21,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>Sala Premiere</td>
-                  <td>Privada</td>
-                  <td>En espera...
-                    Nueva partida en 
-                  </td>
-                  <td>5</td>
-                  <td> <button class="btn btn-warning">Unirse al juego</button></td>
-                </tr>
-              </tbody>
+              <tr>
+                <td scope="row">{{idSala}}</td>
+                <td>{{NomSala}}</td>
+                <td>{{TipSala}}</td>
+                <td>{{EstSala}}</td>
+                <td>{{NoJugadores}} / 16</td>
+                <td> <button class="btn btn-warning">Unirse al juego</button></td>
+              </tr>
+            </tbody>
               <tr>
                 <td scope="row">2</td>
                 <td>Sala Texas</td>
