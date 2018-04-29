@@ -17,9 +17,11 @@ import { ServiciologinService } from './servicios/serviciologin.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
+import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
+import { CartaComponent } from './carta/carta.component';
 export const appRoutes: Routes = [
-  { path:'' ,component : LoginComponent },
-  { path:'sala' ,component : SalaComponent },
+  { path:'' ,component :CartaComponent },
+  { path:'carta' ,component : CartaComponent },
   
   
   
@@ -30,7 +32,9 @@ export const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    SalaComponent
+    SalaComponent,
+    MenuJugadasComponent,
+    CartaComponent
   ],
   imports: [
     BrowserModule, FormsModule,
