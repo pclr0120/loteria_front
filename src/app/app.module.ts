@@ -21,14 +21,19 @@ import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
 import { CartaComponent } from './carta/carta.component';
 import { BarajaComponent } from './baraja/baraja.component';
 import { LobbyComponent } from './lobby/lobby.component';
-import { PartidaComponent } from './partida/partida.component';
+import { NuevapartidaComponent } from './nuevapartida/nuevapartida.component';
 
 export const appRoutes: Routes = [
+
+
   { path:'' ,component : LoginComponent },
 
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
   { path:'lobby' ,component : LobbyComponent },
+  { path:'nuevapartida' ,component : NuevapartidaComponent },
+
+
 
   
   
@@ -44,7 +49,7 @@ export const appRoutes: Routes = [
     CartaComponent,
     BarajaComponent,
     LobbyComponent,
-    PartidaComponent
+    NuevapartidaComponent
   ],
   imports: [
     BrowserModule, FormsModule,
