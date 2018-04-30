@@ -19,10 +19,17 @@ import { ServiciologinService } from './servicios/serviciologin.service';
 import { RouterModule, Routes}  from '@angular/router';
 import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
 import { CartaComponent } from './carta/carta.component';
+import { BarajaComponent } from './baraja/baraja.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { PartidaComponent } from './partida/partida.component';
+
 export const appRoutes: Routes = [
-  { path:'' ,component :CartaComponent },
+  { path:'' ,component : LoginComponent },
+
   { path:'carta' ,component : CartaComponent },
-  
+  { path:'baraja' ,component : BarajaComponent },
+  { path:'lobby' ,component : LobbyComponent },
+
   
   
 ];
@@ -34,7 +41,10 @@ export const appRoutes: Routes = [
     PrincipalComponent,
     SalaComponent,
     MenuJugadasComponent,
-    CartaComponent
+    CartaComponent,
+    BarajaComponent,
+    LobbyComponent,
+    PartidaComponent
   ],
   imports: [
     BrowserModule, FormsModule,

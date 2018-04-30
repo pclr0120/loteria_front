@@ -73,7 +73,8 @@ export class PrincipalComponent implements OnInit {
         localStorage.setItem('Identity', JSON.stringify(this.identity))
         if (this.identity != "Undefined") {
 
-          this.router.navigate(['/sala'])
+          
+          this.router.navigate(['/lobby'])
 
         } 
         else
