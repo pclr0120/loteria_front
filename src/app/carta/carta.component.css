@@ -3,8 +3,6 @@
     background:transparent;
     color:white;
     font:bold 10px/10px verdana;
-    width:105px;
-    height: 170px;
     cursor:pointer;
     cursor:hand;
     text-align:center;
@@ -12,81 +10,86 @@
 
 #boton1 {
     position:absolute;
-    left: 3%;
-    top: 9%;
+    left: 23%;
+    top: 13%;
 }
 #boton2 {
     position:absolute;
-    left: 15%;
-    top: 9%;
+    left: 31%;
+    top: 13%;
 }
 #boton3 {
     position:absolute;
-    left: 27%;
-    top: 9%;
+    left: 39%;
+    top: 13%;
 }
 #boton4 {
     position:absolute;
-    left: 39%;
-    top: 9%;
+    left: 47%;
+    top: 13%;
 }
 #boton5 {
     position:absolute;
-    left: 3%;
-    top: 30%;
+    left: 23%;
+    top: 34%;
 }
 #boton6 {
     position:absolute;
-    left: 15%;
-    top: 30%;
+    left: 31%;
+    top: 34%;
 }
 #boton7 {
     position:absolute;
-    left: 27%;
-    top: 30%;
+    left: 39%;
+    top: 34%;
 }
 #boton8 {
     position:absolute;
-    left: 39%;
-    top: 30%;
+    left: 47%;
+    top: 34%;
 }
 #boton9 {
     position:absolute;
-    left: 3%;
-    top: 52%;
+    left: 23%;
+    top: 56%;
 }
 #boton10 {
     position:absolute;
-    left: 15%;
-    top: 52%;
+    left: 31%;
+    top: 56%;
 }
 #boton11 {
     position:absolute;
-    left: 27%;
-    top: 52%;
+    left: 39%;
+    top: 56%;
 }
 #boton12 {
     position:absolute;
-    left: 39%;
-    top: 52%;
+    left: 47%;
+    top: 56%;
 }
 #boton13 {
     position:absolute;
-    left: 3%;
-    top: 73%;
+    left: 23%;
+    top: 77%;
 }
 #boton14 {
     position:absolute;
-    left: 15%;
-    top: 73%;
+    left: 31%;
+    top: 77%;
 }
 #boton15 {
     position:absolute;
-    left: 27%;
-    top: 73%;
+    left: 39%;
+    top: 77%;
 }
 #boton16 {
     position:absolute;
-    left: 39%;
-    top: 73%;
+    left: 47%;
+    top: 77%;
+}
+#NumCarta {
+    position:absolute;
+    left: 23%;
+    top: 9%;
 }

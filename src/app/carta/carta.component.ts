@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carta.component.css']
 })
 export class CartaComponent implements OnInit {
-
+  NumCarta = 1;
   Carta: any[] = [3,6,1,2,11,12,13,14,15,16,21,23,24,45,34,42];
   Selec: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   constructor() { }
