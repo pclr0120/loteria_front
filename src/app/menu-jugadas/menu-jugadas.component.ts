@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input, Output  } from '@angular/core';
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -18,7 +18,15 @@ Jugadas:any[]=["CENTRO","CHORRO","4 ESQUINAS","LLENA"];
   
 
   //Apuesta de cada jugada
-
+  @Input() ciudad: string;
+  @Input('pais') nacionReal: string;
+  public nombre:string;
+  // Usamos el decorador Output
+  @Output() PasameElPueblo = new EventEmitter();
+  lanzar(event){
+    // Usamos el método emit
+this.PasameElPueblo.emit({nombre: this.nombre});
+}
 
   ngOnInit() {
   }
