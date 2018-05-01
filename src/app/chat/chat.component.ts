@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class ChatComponent implements OnInit {
   
   messages = [{
-    "text":"Hi How are you?",
+    "text":"Do you like guinea pigs?",
     "self":false
   },{
-    "text":"I am fine",
+    "text":"I love it <3",
     "self":true
   }]
   replyMessage = "";
