@@ -1,13 +1,12 @@
 .right{
     text-align: right;
+    color: #000066;
 }
 .chatbox{
+    margin-top: 2%;
     margin-left: 10px;
     border: 5px solid black;
     border-radius: 2%; 
-    font-size: 15px;
-    font-style: oblique;
-    font-weight: bold;
     background-image: url(../../assets/Resources/fondo_chat.jpg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -18,6 +17,10 @@
     padding: 16px;
 }
 .messages{
+    text-shadow: 0.5px 0.5px 1px grey;
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: bold;
     height:470px;
     overflow: auto;
 }
