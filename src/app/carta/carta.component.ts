@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input, Output  } from '@angular/core';
 
 @Component({
   selector: 'app-carta',
@@ -14,6 +14,15 @@ export class CartaComponent implements OnInit {
   ngOnInit() {
   }
 
+//
+  childdata="";
+//CONEXION CON EL COMPOENETE MENUJUGADA, OBTIENE EL NUMERO DE LA JUGADA A VERIFICAR
+  onClicked(value:string){
+
+    this.childdata=value;
+    //MANDA A VERIFICAR
+    this.VerificarJugar();
+  }
   Holi(pos){
     //En pos viene el id de la carta en cuestion
     console.log("Holi "+ this.Carta[pos]);
@@ -23,4 +32,12 @@ export class CartaComponent implements OnInit {
       this.Selec[pos] = 1;
     }
   }
+
+  //AQUI SE MANDARA LA JUGADA A VERIFICAR 
+  VerificarJugar(){
+    console.log("VErificando jugada");
+  }
+
+
+
 }

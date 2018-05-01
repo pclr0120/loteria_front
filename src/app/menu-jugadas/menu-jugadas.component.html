@@ -1,7 +1,7 @@
 
 <div class="card card-container">
     <div class="card2 card-container2 ">
-        <label style="font-size: 26px; color: #ffff; left: 5%; " >ACUMULADO</label>
+        <label style="font-size: 26px; color: #ffff; " >ACUMULADO</label>
         <div class="">
             <a style="font-size: 30px; color: #ffff">
                 <img src="/assets/Resources/coins.png" alt="Smiley face"  height="50"  width="50"> {{acu}}
@@ -10,26 +10,26 @@
             </div>
     
     </div>
-    <button class="boton" [disabled]="JugadaV[0]"  [ngStyle]="{'background-color': JugadaV[0]? 'red' : 'blue'}">
+    <button class="boton"  [disabled]="JugadaV[0]" (click)="Verificar(0)"  [ngStyle]="{'background-color': JugadaV[0]? 'red' : 'blue'}">
         <a >
            {{Jugadas[0]}} <a></a><a></a><a></a> <img src="/assets/Resources/coins.png" alt="Smiley face"  height="20"  width="20"><a>{{Apuesta[0]}}</a>
           
           </a>
     </button>
-        <button class="boton1"  [disabled]="JugadaV[1]"[ngStyle]="{'background-color': JugadaV[1]? 'red' : 'blue'}">
+        <button class="boton1" (click)="Verificar(1)"  [disabled]="JugadaV[1]"[ngStyle]="{'background-color': JugadaV[1]? 'red' : 'blue'}">
             <a href="#">
                 {{Jugadas[1]}} <a></a><a></a> <img src="/assets/Resources/coins.png" alt="Smiley face"  height="20"  width="20"><a>{{Apuesta[1]}}</a>
               
               </a>
             </button>
-            <button class="boton2"  [disabled]="JugadaV[2]" [ngStyle]="{'background-color': JugadaV[2]? 'red' : 'blue'}">
+            <button class="boton2" (click)="Verificar(2)"  [disabled]="JugadaV[2]" [ngStyle]="{'background-color': JugadaV[2]? 'red' : 'blue'}">
                 <a href="#">
                     {{Jugadas[2]}} <a> </a><img src="/assets/Resources/coins.png" alt="Smiley face"  height="20"  width="20"><a>{{Apuesta[2]}}</a>
                   
                   </a>
                 </button>
 
-                <button class="boton3"  [disabled]="JugadaV[3]" [ngStyle]="{'background-color': JugadaV[3]? 'red' : 'blue'}">
+                <button class="boton3"(click)="Verificar(3)"   [disabled]="JugadaV[3]" [ngStyle]="{'background-color': JugadaV[3]? 'red' : 'blue'}">
                     <a href="#">
                         {{Jugadas[3]}} <a></a><a></a> <img  src="/assets/Resources/coins.png" alt="Smiley face"  height="20"  width="20"><a >{{Apuesta[3]}}</a>
                       </a>

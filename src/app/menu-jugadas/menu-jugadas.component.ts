@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter, Input, Output  } from '@angular/core';
+import { Component, OnInit,EventEmitter,  Output , Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -13,21 +13,18 @@ Jugadas:any[]=["CENTRO","CHORRO","4 ESQUINAS","LLENA"];
   //acumulado
   acu:any=200;
   //Verificacion de jugadas 1 para jugada verificada 0 para diponible
-  JugadaV:any[]=[true,false,true,false]
+  JugadaV:any[]=[false,false,true,false]
   constructor() { }
   
 
-  //Apuesta de cada jugada
-  @Input() ciudad: string;
-  @Input('pais') nacionReal: string;
-  public nombre:string;
-  // Usamos el decorador Output
-  @Output() PasameElPueblo = new EventEmitter();
-  lanzar(event){
-    // Usamos el método emit
-this.PasameElPueblo.emit({nombre: this.nombre});
-}
 
+  @Output() clicked=new EventEmitter<string>();
+
+  Verificar(jugada:any){
+    //MANDA EL PARAMETRO DEL NUMERO DE JUGADA AL COMPOENETE CARTA
+    this.clicked.emit(jugada);
+    console.log("Verificar:",jugada);
+  }
   ngOnInit() {
   }
 

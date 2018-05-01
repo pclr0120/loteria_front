@@ -24,7 +24,7 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { PartidaComponent } from './partida/partida.component';
 
 export const appRoutes: Routes = [
-  { path:'' ,component : PartidaComponent },
+  { path:'' ,component : CartaComponent},
 
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
