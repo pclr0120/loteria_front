@@ -14,6 +14,7 @@ import {APP_BASE_HREF} from '@angular/common';
 //Servicios
 import { RegistrousuarioService } from './servicios/registrousuario.service';
 import { ServiciologinService } from './servicios/serviciologin.service';
+import { SalasService } from './servicios/salas.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
@@ -55,7 +56,7 @@ export const appRoutes: Routes = [
     BrowserModule, FormsModule,
     ReactiveFormsModule,HttpModule, RouterModule.forRoot(appRoutes)
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },RegistrousuarioService,ServiciologinService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' },RegistrousuarioService,ServiciologinService, SalasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

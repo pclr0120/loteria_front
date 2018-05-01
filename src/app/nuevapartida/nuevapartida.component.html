@@ -6,35 +6,70 @@
     <div class="gradient">
       <div class="container">
         <h1 class="cover-heading" style=" margin-bottom: 0px;padding-top: 13px;">Crear Nueva Partida</h1>
-        <h5 style=" font-family: 'Open Sans'; ">Es gratis</h5>
 
-        <form [formGroup]="RegistroNuevaPartidaForm" (ngSubmit)="registrar()">
-          <input class="registro" type="text" placeholder="Nombre de usuario" formControlName="userName" style=" width: 50%; "><br>
-          <input class="registro" type="email" placeholder="Correo electrónico" formControlName="correo" style=" width: 70%; "><br>
-          <label class="registro_lbl">Fecha de Nacimiento</label><br>
-            <input type="date" class="form-control" name="fechaNacimiento" formControlName="fechaNacimiento">
+        <form [formGroup]="RegistroNuevaPartidaForm" (ngSubmit)="saveNuevaPartida()">
 
-          <input type="radio" class="form-check-input" formControlName="genero" value="H" checked style=" margin-top: 16px; margin-left: 6px;"> <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Hombre</p>
-          <input type="radio" class="form-check-input" formControlName="genero" value="M" style=" margin-top: 16px; margin-left: 6px;"> <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Mujer</p><br>
-          <input class="registro"  type="password" placeholder="Nueva contraseña" formControlName="contra" style=" width: 70%; "><br>
-          <input class="registro" type="password" placeholder="Repita su contraseña" formControlName="contraconf"style=" width: 70%; "><br>
-         <p class="politicas">
-           Al hacer clic en Registrarse usted está aceptando
-           las <a href="#">Reglas de usuario</a>, así como nuestra <a href="#">Poítica de 
-           datos</a>.
-         </p> 
-         <button type="button" class="btn btn-primary"  >Registrar</button>
+          <i class="fa fa-check-circle check" *ngIf="RegistroNuevaPartidaForm.controls.nombreSala.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="RegistroNuevaPartidaForm.controls.nombreSala.invalid &&
+            RegistroNuevaPartidaForm.controls.nombreSala.touched"></i>
+          <input class="registro" type="text" placeholder="Nombre de partida" formControlName="nombreSala" style=" width: 50%; ">
+          <p class="alert alert-danger" *ngIf="RegistroNuevaPartidaForm.controls.nombreSala.invalid &&
+          RegistroNuevaPartidaForm.controls.nombreSala.touched">
+            Es obligatorio el nombre de partida.
+          </p>
+          <br>
+            <input checked type="radio" class="form-check-input" formControlName="modo" value="1" style=" margin-top: 16px; margin-left: 6px;">
+            <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Privada</p>
+            <input type="radio" class="form-check-input" formControlName="modo" value="2" style=" margin-top: 16px; margin-left: 6px;">
+            <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Publica</p>
+            <br>
          
-         </form>
+          <input class="registro"type="submit" type="number"min="0" max="20" placeholder="Numero de jugadores" formControlName="numeroJugadores" style=" width: 70%; ">
+          <br>
+          <input class="registro" type="text" placeholder="Contraseña de partida" formControlName="contra" style=" width: 70%; ">
+          <br>
+
+
+          <button type="button" class="btn btn-primary" (click)="saveNuevaPartida()" type="submit" [disabled]="!RegistroNuevaPartidaForm.valid"data-toggle="modal" data-target=".bs-example-modal-sm">Crear sala</button>
+          <p class="alert alert-danger" *ngIf="!RegistroNuevaPartidaForm.valid">
+            por favor complete los campos
+          </p>
+
+
+          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="page-header">
+                  <h4 class="modal-title">
+                    <b>NUEVA PARTIDA</b>
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <h4>Sala creada exitosamente!</h4>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-info" aria-label="Close" data-dismiss="modal" (click)="partida()"> Ok </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </form>
+
       </div>
     </div>
   </main>
+
 </div>
 <footer class="mastfoot mt-auto footer_log">
-    <div class="inner">
-     <br><img src="../../assets/Resources/Logo401.png" alt="401 Software" style="width: 45px"><br>
-      Ingeniería de Software <br>
-      Grupo 401 <br>
-      2018® Todos los derechos reservados.
-    </div>
-  </footer>
+  <div class="inner">
+    <br>
+    <img src="../../assets/Resources/Logo401.png" alt="401 Software" style="width: 45px">
+    <br> Ingeniería de Software
+    <br> Grupo 401
+    <br> 2018® Todos los derechos reservados.
+  </div>
+</footer>
