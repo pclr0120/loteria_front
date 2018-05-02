@@ -1,6 +1,7 @@
 .right{
     text-align: right;
     color: #000066;
+    font-weight: bold;
 }
 .chatbox{
     margin-top: 2%;
@@ -20,7 +21,6 @@
     text-shadow: 0.5px 0.5px 1px grey;
     font-size: 15px;
     font-style: oblique;
-    font-weight: bold;
     height:470px;
     overflow: auto;
 }

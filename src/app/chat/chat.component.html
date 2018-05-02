@@ -6,7 +6,8 @@
 </div>
 
 <div class="input-container">
-<input type="text" class="inputtext" placeholder="Mensaje" [(ngModel)]="replyMessage">
-<button class="replyBtn" (click)="reply()">.</button>
+<input type="text" id="enter" onkeydown = "if (event.keyCode == 13)
+document.getElementById('myButton').click()" class="inputtext" placeholder="Mensaje" [(ngModel)]="replyMessage">
+<button class="replyBtn" id="myButton" (click)="reply()">.</button>
 </div>
 </div>
