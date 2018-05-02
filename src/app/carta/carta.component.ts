@@ -56,10 +56,11 @@ export class CartaComponent implements OnInit {
 
       console.log("Verificar cartas:",this.cartasAverificar);
 
-
-
     
   }
+
+  //Para verificar con back-end las jugadas se le enviara Un arreglo con las cartas de tal jugada
+  //Los 4 metodos devuelven un arreglo con las cartas a vericar
 
     Chorro():any[]{
 
