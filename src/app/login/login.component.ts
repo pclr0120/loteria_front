@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   //Falta que funcionen las validaciones
   //Mandar mensajes  de error y exito
   //Falta cerrar sesion, no lo hicimos porque aun no esta la sala.
-
   constructor(private router: Router, private LoginService: ServiciologinService, private registrousuarioService: RegistrousuarioService, private formBuilder: FormBuilder) { }
   //Registro
   RegistroUsuarioForm: FormGroup;
@@ -82,7 +81,6 @@ export class LoginComponent implements OnInit {
           .subscribe(newpres => { })
         console.log(this.usuario)
         //Aqui mandar mensaje que si se registro 
-
 
       }
     )

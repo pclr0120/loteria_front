@@ -22,7 +22,7 @@
             </thead>
             <tbody>
               <tr>
-                <td scope="row">{{idSala}}</td>
+                <td scope="row" id="{{idSala}}">{{idSala}}</td>
                 <td>{{NomSala}}</td>
                 <td>{{TipSala}}</td>
                 <td>{{EstSala}}</td>
@@ -44,7 +44,7 @@
       
         <div class="col col-lg-4" style="text-align: center">
           <div class="container alto">
-            <button class="btn btn-danger">Iniciar nueva partida</button>
+            <button class="btn btn-danger" (click)="nuevapartida()">Iniciar nueva partida</button>
           </div>
         </div>
       </div>
