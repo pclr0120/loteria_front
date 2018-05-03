@@ -20,19 +20,24 @@ import {APP_BASE_HREF} from '@angular/common';
 //Servicios
 import { RegistrousuarioService } from './servicios/registrousuario.service';
 import { ServiciologinService } from './servicios/serviciologin.service';
+import { SalasService } from './servicios/salas.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
-
+import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
+import { CartaComponent } from './carta/carta.component';
+import { BarajaComponent } from './baraja/baraja.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { NuevapartidaComponent } from './nuevapartida/nuevapartida.component';
 
 export const appRoutes: Routes = [
-  { path:'' ,component : CartaComponent},
 
+  { path:'' ,component : LoginComponent },
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
   { path:'lobby' ,component : LobbyComponent },
+  { path:'nuevapartida' ,component : NuevapartidaComponent },
   { path:'chat' ,component : ChatComponent },
-
 ];
 
 @NgModule({
@@ -45,14 +50,15 @@ export const appRoutes: Routes = [
     CartaComponent,
     BarajaComponent,
     LobbyComponent,
+    NuevapartidaComponent,
     PartidaComponent,
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
     ReactiveFormsModule,HttpModule, RouterModule.forRoot(appRoutes)
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },RegistrousuarioService,ServiciologinService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' },RegistrousuarioService,ServiciologinService, SalasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
