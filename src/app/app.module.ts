@@ -10,6 +10,7 @@ import { BarajaComponent } from './baraja/baraja.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { PartidaComponent } from './partida/partida.component';
 import { ChatComponent } from './chat/chat.component';
+import { NuevapartidaComponent } from './nuevapartida/nuevapartida.component';
 
 import { HttpModule }    from '@angular/http';
 import { Headers, Http, Response } from '@angular/http';
@@ -24,11 +25,6 @@ import { SalasService } from './servicios/salas.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
-import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
-import { CartaComponent } from './carta/carta.component';
-import { BarajaComponent } from './baraja/baraja.component';
-import { LobbyComponent } from './lobby/lobby.component';
-import { NuevapartidaComponent } from './nuevapartida/nuevapartida.component';
 
 export const appRoutes: Routes = [
 
@@ -38,6 +34,8 @@ export const appRoutes: Routes = [
   { path:'lobby' ,component : LobbyComponent },
   { path:'nuevapartida' ,component : NuevapartidaComponent },
   { path:'chat' ,component : ChatComponent },
+  { path:'partida' ,component : PartidaComponent }
+
 ];
 
 @NgModule({

@@ -1,19 +1,21 @@
 .main{
-    background-image: url(../../assets/Resources/fondo_baraja.jpg);
     color: white;
+    position:absolute;
     font-size: 100px;
+    margin-left: 57%;
+    margin-top: 2%;
 };
 #img{
     margin-left: 15px;
 }
 #principal{
-    width:220px; 
-    height:350px;
-    margin-left: 14%;
+    width:147px; 
+    height:234px;
+    margin-left: 25%;
 }
 #secundaria{
-    width:130px; 
-    height:200px;
+    width:87px; 
+    height:134px;
     margin-left: 20%; 
 }
 .marco1 IMG{ 
