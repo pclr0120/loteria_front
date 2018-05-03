@@ -24,6 +24,7 @@ export class CartaComponent implements OnInit {
     //MANDA A VERIFICAR
    
     this.VerificarJugar(value);
+    
     console.log("Selec:",this.Selec)
   }
   Holi(pos){
@@ -46,7 +47,7 @@ export class CartaComponent implements OnInit {
  
     if(jugada=='1')
       this.Centro();
-      if(jugada=='2')
+      if(jugada=='2') 
       this.Esquinas();
       if(jugada=='3')
       this.Llena();
@@ -61,6 +62,8 @@ export class CartaComponent implements OnInit {
 
   //Para verificar con back-end las jugadas se le enviara Un arreglo con las cartas de tal jugada
   //Los 4 metodos devuelven un arreglo con las cartas a vericar
+  // el arreglo son las cartas con las que se hicieron chorrro 
+  //el unico que no manda un arreglo de 4 es  la llena es de 16 
 
     Chorro():any[]{
 
