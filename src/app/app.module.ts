@@ -26,7 +26,7 @@ import { RouterModule, Routes}  from '@angular/router';
 
 
 export const appRoutes: Routes = [
-  { path:'' ,component : LoginComponent },
+  { path:'' ,component : CartaComponent},
 
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
