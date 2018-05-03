@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,  Output , Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -6,10 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-jugadas.component.css']
 })
 export class MenuJugadasComponent implements OnInit {
-
+  //Jugadas 
+Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
+//monedas 
+  Apuesta: any[] = [20,30,10,50];
+  //acumulado
+  acu:any=200;
+  //Verificacion de jugadas 1 para jugada verificada 0 para diponible
+  JugadaV:any[]=[false,false,false,false]
   constructor() { }
+  
 
+
+  @Output() clicked=new EventEmitter<string>();
+
+  Verificar(jugada:any){
+    //MANDA EL PARAMETRO DEL NUMERO DE JUGADA AL COMPOENETE CARTA
+    this.clicked.emit(jugada);
+  //  console.log("Verificar:",jugada);
+  }
   ngOnInit() {
   }
+
+
 
 }

@@ -4,6 +4,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { SalaComponent } from './sala/sala.component';
+import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
+import { CartaComponent } from './carta/carta.component';
+import { BarajaComponent } from './baraja/baraja.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { PartidaComponent } from './partida/partida.component';
+import { ChatComponent } from './chat/chat.component';
 
 import { HttpModule }    from '@angular/http';
 import { Headers, Http, Response } from '@angular/http';
@@ -26,18 +32,12 @@ import { NuevapartidaComponent } from './nuevapartida/nuevapartida.component';
 
 export const appRoutes: Routes = [
 
-
   { path:'' ,component : LoginComponent },
-
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
   { path:'lobby' ,component : LobbyComponent },
   { path:'nuevapartida' ,component : NuevapartidaComponent },
-
-
-
-  
-  
+  { path:'chat' ,component : ChatComponent },
 ];
 
 @NgModule({
@@ -50,7 +50,9 @@ export const appRoutes: Routes = [
     CartaComponent,
     BarajaComponent,
     LobbyComponent,
-    NuevapartidaComponent
+    NuevapartidaComponent,
+    PartidaComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
