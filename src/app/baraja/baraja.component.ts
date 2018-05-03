@@ -9,14 +9,11 @@ import * as io from "socket.io-client";
 export class BarajaComponent implements OnInit {
   title = "app";
   number:number;
-  number2:number;
-  number3:number;
   imagen: string;
   vector = ["0"];
   ultimo: string;
   penultimo: string;
   antepenultimo: string;
-  //antepenultimo = this.vector[this.vector.length - 3];
   
   socket: SocketIOClient.Socket;
 

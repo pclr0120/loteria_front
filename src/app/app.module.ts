@@ -4,6 +4,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { SalaComponent } from './sala/sala.component';
+import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
+import { CartaComponent } from './carta/carta.component';
+import { BarajaComponent } from './baraja/baraja.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { PartidaComponent } from './partida/partida.component';
+import { ChatComponent } from './chat/chat.component';
 
 import { HttpModule }    from '@angular/http';
 import { Headers, Http, Response } from '@angular/http';
@@ -17,11 +23,7 @@ import { ServiciologinService } from './servicios/serviciologin.service';
 
 //Rutas
 import { RouterModule, Routes}  from '@angular/router';
-import { MenuJugadasComponent } from './menu-jugadas/menu-jugadas.component';
-import { CartaComponent } from './carta/carta.component';
-import { BarajaComponent } from './baraja/baraja.component';
-import { LobbyComponent } from './lobby/lobby.component';
-import { PartidaComponent } from './partida/partida.component';
+
 
 export const appRoutes: Routes = [
   { path:'' ,component : LoginComponent },
@@ -29,9 +31,8 @@ export const appRoutes: Routes = [
   { path:'carta' ,component : CartaComponent },
   { path:'baraja' ,component : BarajaComponent },
   { path:'lobby' ,component : LobbyComponent },
+  { path:'chat' ,component : ChatComponent },
 
-  
-  
 ];
 
 @NgModule({
@@ -44,7 +45,8 @@ export const appRoutes: Routes = [
     CartaComponent,
     BarajaComponent,
     LobbyComponent,
-    PartidaComponent
+    PartidaComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule, FormsModule,
