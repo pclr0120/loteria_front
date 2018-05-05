@@ -1,4 +1,9 @@
 import { Component, OnInit,EventEmitter,  Output , Input } from '@angular/core';
+import * as io from "socket.io-client";
+import { isEmpty } from 'rxjs/operator/isEmpty';
+import { forEach } from '@angular/router/src/utils/collection';
+import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
+var socket = io.connect('http://localhost:8080', {'forceNew':true});
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -14,7 +19,15 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
   acu:any=200;
   //Verificacion de jugadas 1 para jugada verificada 0 para diponible
   JugadaV:any[]=[false,false,false,false]
-  constructor() { }
+  constructor() { 
+    socket = io.connect('http://localhost:8080', {'forceNew':true});
+    socket.on('jugada',function(data) {
+      console.log(data);
+      if(data.jugada=="Chorro" && data.verificar==true){
+        
+      }
+    });
+  }
   
 
 
