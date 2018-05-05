@@ -29,11 +29,8 @@ import { RouterModule, Routes}  from '@angular/router';
 export const appRoutes: Routes = [
 
   { path:'' ,component : LoginComponent },
-  { path:'carta' ,component : CartaComponent },
-  { path:'baraja' ,component : BarajaComponent },
   { path:'lobby' ,component : LobbyComponent },
   { path:'nuevapartida' ,component : NuevapartidaComponent },
-  { path:'chat' ,component : ChatComponent },
   { path:'partida' ,component : PartidaComponent }
 
 ];

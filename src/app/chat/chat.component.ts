@@ -28,17 +28,30 @@ export class ChatComponent implements OnInit {
 
   socket: SocketIOClient.Socket;
   constructor() {
-    var socket=io.connect("https://loteria-backend.herokuapp.com/");
-    socket.on('prueba',(data)=>{
+    var socket = io.connect('http://localhost:8080', {'forceNew':true});
+    var payload={
+      autor: "Saul",
+      text: "Hola soy texto",
+      verificar: false
+    };
+
+    socket.emit('adduser', "saul", "sala2");
+
+    socket.emit('new-message',payload);
+
+
+    socket.on('messages',(data)=>{
       
     //asignacion del numero que aroja el socket a la variable 
-    this.str=data.prueba;
+    this.str=data.autor + ": "+data.text;
     this.messages.push({
       text:this.str,
       self:false
     })
     
     });
+
+    socket.emit('new-message',payload);
    }
 
   ngOnInit() {
