@@ -4,6 +4,7 @@ import { SalasService } from '../servicios/salas.service';
 import { Response } from '@angular/http/src/static_response';
 import { Router, ActivatedRoute } from "@angular/router"
 import { max } from 'rxjs/operator/max';
+
 @Component({
   selector: 'app-nuevapartida',
   templateUrl: './nuevapartida.component.html',

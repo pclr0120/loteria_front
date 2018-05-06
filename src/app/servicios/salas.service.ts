@@ -5,11 +5,8 @@ import 'rxjs/Rx';
 export class SalasService {
 
   constructor(private http:Http) { }
-  presURL = 'http://localhost:4000/salas';
+  presURL = 'http://localhost:4000/';
 
-  
-
-  
 getNuevaPartida(){
   return this.http.get(this.presURL).map(res => res.json())
   .toPromise()
@@ -19,11 +16,14 @@ getNuevaPartida(){
 
 getObtenerNumSala(){
   return this.http.get('http://localhost:4000/salasContar')
-
-
   .map(res =>     
  res.json());
 
+}
+
+getSalas(){
+  return this.http.get(this.presURL+'getSalas')
+    .map(res=>res.json());
 }
 
 postNuevaPartida(sala: any) {
