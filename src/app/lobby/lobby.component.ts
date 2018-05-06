@@ -24,6 +24,7 @@ export class LobbyComponent implements OnInit {
     
   }
   ngOnInit() {
+    //ESTO SE TIENE QUE QUITAR NADA MAS ESTA PARA PRUEBAS
     this.socketService.addUser("adrian" , "Sala-PRO");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
@@ -37,8 +38,14 @@ export class LobbyComponent implements OnInit {
   }
 
   nuevapartida() {       
-    this.router.navigate(['/nuevapartida'])
+    this.router.navigate(['/nuevapartida']);
 
+  }
+
+  ingresarSala(){
+    //ESTO SE TIENE QUE DESCOMENTAR
+    //this.socketService.addUser(usuario , nombreSala);
+    this.router.navigate(['/partida']);
   }
 
   getSalas(){
