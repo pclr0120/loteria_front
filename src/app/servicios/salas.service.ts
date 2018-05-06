@@ -28,9 +28,8 @@ getSalas(){
 
 postNuevaPartida(sala: any) {
   const newpres = JSON.stringify(sala);
-  console.log(sala)
   const headers = new Headers({ 'Content-Type': 'Application/json' });
-  return this.http.post(this.presURL, newpres, { headers })
+  return this.http.post(this.presURL + 'salas', newpres, { headers })
 
     .map(res => {
 

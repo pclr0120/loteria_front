@@ -32,7 +32,7 @@
                 </ng-container>
                 <td align="center">{{sala.Estado}}</td>
                 <td align="center">{{sala.numJugadores}} / 16</td>
-                <td> <button class="btn btn-warning">Unirse al juego</button></td>
+                <td> <button (click)="ingresarSala()" class="btn btn-warning">Unirse al juego</button></td>
               </tr>
             </tbody>
             </table>
