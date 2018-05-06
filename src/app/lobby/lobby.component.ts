@@ -25,10 +25,10 @@ export class LobbyComponent implements OnInit {
   }
   ngOnInit() {
     //ESTO SE TIENE QUE QUITAR NADA MAS ESTA PARA PRUEBAS
-    this.socketService.addUser("adrian" , "Sala-PRO");
+    this.socketService.addUser("adrian" , "Sala8");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
-      console.log(this.Salas);
+      //console.log(this.Salas);
     });
     this.getSalas();
   }

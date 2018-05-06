@@ -40,6 +40,25 @@ export class SocketService {
     return observable;
   }
 
+  //EMITIR EL ESTADO DE LA SALA
+  EmitirEstadoPartida(){
+    this.socket.emit('Estado');
+  }
+
+  //OBTENER EL ESTADO DE LA SALA
+  getEstadoPartida(){
+    let observable = new Observable(observer => {
+      this.socket.on('EstadoPartida', function(data){
+        //console.log("a ver" + data);
+        observer.next(data);
+      });
+
+    });
+    return observable;
+  }
+
+
+
   
 
 }

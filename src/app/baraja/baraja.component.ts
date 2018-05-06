@@ -60,7 +60,7 @@ export class BarajaComponent implements OnInit {
     }else{
     this.antepenultimo = this.vector[this.vector.length - 3];
     }
-    console.log(this.vector.length);
+    //console.log(this.vector.length);
     });
    }
    
@@ -71,7 +71,7 @@ export class BarajaComponent implements OnInit {
       text: "",
       verificar: false
     };
-    this.socket.emit('prueba',payload);
+    //this.socket.emit('prueba',payload);
   } 
 
 }
