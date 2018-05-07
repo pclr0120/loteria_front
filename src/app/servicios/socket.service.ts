@@ -86,6 +86,18 @@ export class SocketService {
     return observable;
   }
 
+  getJugada(){
+    let observable = new Observable(observer => {
+      //this.socket.emit('Salas');
+      this.socket.on('jugada', function(number){
+        //console.log("socket " + salas);
+        observer.next(number);
+      });
+
+    });
+    return observable;
+  }
+
   conexionEscucha(nombreSala){
     this.socket.emit('ConexionEscuchar',nombreSala);
   }

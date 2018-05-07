@@ -1,5 +1,6 @@
 import { Component, OnInit,EventEmitter,  Output , Input } from '@angular/core';
 import * as io from "socket.io-client";
+import { SocketService } from '../servicios/socket.service';
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -16,21 +17,15 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
   //acumulado
   acu:any=200;
   //Verificacion de jugadas 1 para jugada verificada 0 para diponible
-  JugadaV:any[]=[false,false,false,false]
-  constructor() {
-    var socket = io.connect('http://localhost:8080', {'forceNew':true});
+  JugadaV=[false,false,false,false];
+  constructor(private socketService:SocketService) {
+    this.socketService.conexionEscucha( JSON.parse(localStorage.getItem('nombreSala')));
 
     var payload={
       autor:"Carry",
       text: "Hola",
       verificar: false
     };
-
-    socket.emit("adduser","carry","sala1");
-
-    socket.on("jugada", function(data){
-      console.log(data);
-    });
   }
   
 
@@ -42,7 +37,26 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
     this.clicked.emit(jugada);
   //  console.log("Verificar:",jugada);
   }
+
+  getJugadaRes(data){
+    console.log(data[0].valido);
+      if(data[0].valido){
+        if(data[0].jugada=='Chorro'){
+          this.JugadaV[0]=true;
+        }else if(data[0].jugada=='Centro'){
+          this.JugadaV[1]=true;
+        }else if(data[0].jugada=='Esquinas'){
+          this.JugadaV[2]=true;
+        }else if(data[0].jugada=='Llenas'){
+          this.JugadaV[3]=true;
+        }
+      }
+  }
   ngOnInit() {
+    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
+    this.socketService.getJugada().subscribe(response => {
+      this.getJugadaRes(response);
+    });
   }
 
 

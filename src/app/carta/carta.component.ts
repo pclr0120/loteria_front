@@ -13,7 +13,7 @@ var socket = io.connect('http://localhost:8080', {'forceNew':true});
   providers: [SocketService]
 })
 export class CartaComponent implements OnInit {
-  chorro: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];;
+  chorro: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   arreglo = new Array();
   algo = "";
   NumCarta = 1;
@@ -28,27 +28,12 @@ export class CartaComponent implements OnInit {
   };
 
   constructor(private socketService:SocketService) {
-    socket = io.connect('http://localhost:8080', {'forceNew':true});
-    var payload={
-      autor: "Saul",
-      text: "Hola soy texto",
-      verificar: false
-    };
-
-
-    socket.emit('adduser', "saul", "sala1");
-
-    socket.on('jugada',function(data) {
-      console.log(data);
-      if(data.jugada=="Chorro" && data.verificar==true){
-        
-      }
-    });
     //socket.emit('',payload);
+    this.socketService.conexionEscucha( JSON.parse(localStorage.getItem('nombreSala')));
    }
 
   ngOnInit() {
-
+    
   }
 
 //
@@ -164,8 +149,8 @@ export class CartaComponent implements OnInit {
       }else{
         this.cartasAverificar[0]=0;
       }
-      if(this.Selec[7] == 1){
-        this.cartasAverificar[1]=this.Carta[7];
+      if(this.Selec[3] == 1){
+        this.cartasAverificar[1]=this.Carta[3];
       }else{
         this.cartasAverificar[1]=0;
       }
@@ -185,16 +170,17 @@ export class CartaComponent implements OnInit {
     }
     
     Llena(){
+      var llenas = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
       for(var i =0; i<this.Selec.length;i++){
         if(this.Selec[i]==1){
-          this.cartasAverificar[i]=this.Carta[i];
+          llenas[i]=this.Carta[i];
         }else{
-          this.cartasAverificar[i]=0;
+          llenas[i]=0;
         }
       }
 
       //VERIFICAR LLENAS
-      this.socketService.verificarLlenas(this.payload, this.cartasAverificar);
+      this.socketService.verificarLlenas(this.payload, llenas);
     }
     
 

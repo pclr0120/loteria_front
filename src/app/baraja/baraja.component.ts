@@ -70,7 +70,7 @@ export class BarajaComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.socketService.conexionEscucha("Hola3");
+    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
     this.socketService.getNumerosBaraja().subscribe(response => {
       this.getNumerosBaraja(response);
     });

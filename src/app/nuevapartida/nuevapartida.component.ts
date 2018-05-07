@@ -79,7 +79,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
         this.SalasService.postNuevaPartida(this.nuevapartida)
           .subscribe(newpres => { 
             console.log(newpres);
-            this.socketService.addUser(localStorage.getItem('identity') , this.nuevapartida.nombreSala);
+            this.socketService.addUser(JSON.parse(localStorage.getItem('identity')) , this.nuevapartida.nombreSala);
             //this.socketService.EmitirEstadoPartida();
             this.partida();
           })
