@@ -42,9 +42,10 @@ export class LobbyComponent implements OnInit {
 
   }
 
-  ingresarSala(){
+  ingresarSala(nombreSala){
     //ESTO SE TIENE QUE DESCOMENTAR
     //this.socketService.addUser(usuario , nombreSala);
+    localStorage.setItem('nombreSala',JSON.stringify(nombreSala));
     this.router.navigate(['/partida']);
   }
 
