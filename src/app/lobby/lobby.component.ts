@@ -17,6 +17,7 @@ export class LobbyComponent implements OnInit {
   public Salas:any;
   public Salas_BD: any[];
   public cartasSelec = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //HOLIIIIII
+  public sala;
   
 
   constructor(private router: Router, 
@@ -43,10 +44,12 @@ export class LobbyComponent implements OnInit {
 
   }
 
-  ingresarSala(nombreSala){
+  ingresarSala(id_carta){
     //ESTO SE TIENE QUE DESCOMENTAR
     //this.socketService.addUser(usuario , nombreSala);
-    localStorage.setItem('nombreSala',JSON.stringify(nombreSala));
+    console.log("ID CARTA: " + id_carta);
+    console.log("Sala " + this.sala);
+    localStorage.setItem('nombreSala',JSON.stringify(this.sala));
     this.router.navigate(['/partida']);
   }
 
@@ -64,5 +67,9 @@ export class LobbyComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  guardarSala(sala){
+    this.sala = sala;
   }
 }

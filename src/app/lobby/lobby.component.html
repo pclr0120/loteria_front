@@ -32,7 +32,10 @@
                 </ng-container>
                 <td align="center">{{sala.Estado}}</td>
                 <td align="center">{{sala.numJugadores}} / 16</td>
-                <td> <button (click)="ingresarSala(sala.nombreSala)" class="btn btn-warning">Unirse al juego</button></td>
+                <td> 
+                  <!--<button (click)="ingresarSala(sala.nombreSala)" class="btn btn-warning">Unirse al juego</button>-->
+                  <a role="button" class="btn btn-primary" data-toggle="modal" href="#ModalD" (click)="guardarSala(sala.nombreSala)">Unirse al juego</a>
+                </td>
               </tr>
             </tbody>
             </table>
@@ -51,14 +54,14 @@
 
 
 <!--Sustituir por este boton-->
-<a role="button" class="btn btn-primary" data-toggle="modal" href="#ModalD">Unirse al juego</a>
+
   <!-- Modal -->
   <div class="modal fade bd-example-modal-sm" id="ModalD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h3 align="center" class="modal-title" id="exampleModalLabel"><b>Catalogo de cartas:</b></h3>
-          <button type="button" class="close" data-dismiss="modal" (click)="ingresarSala()" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -125,7 +128,7 @@
             <div class="carousel-item">
               <img class="d-block w-100" src="../../assets/Resources/Cartas/7.PNG">
               <div class="carousel-caption d-none d-md-block" *ngIf="cartasSelec[6] == 0">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ingresarSala(6)">Seleccionar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ingresarSala( 6)">Seleccionar</button>
               </div>
             </div>
             <div class="carousel-item">
