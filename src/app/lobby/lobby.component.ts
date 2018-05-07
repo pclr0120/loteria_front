@@ -16,6 +16,7 @@ var pru: any;
 export class LobbyComponent implements OnInit {
   public Salas:any;
   public Salas_BD: any[];
+  public cartasSelec = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //HOLIIIIII
   
 
   constructor(private router: Router, 
