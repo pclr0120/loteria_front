@@ -3,11 +3,14 @@ import { isEmpty } from 'rxjs/operator/isEmpty';
 import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
 import * as io from "socket.io-client";
+import { SocketService } from '../servicios/socket.service';
 var socket = io.connect('http://localhost:8080', {'forceNew':true});
+
 @Component({
   selector: 'app-baraja',
   templateUrl: './baraja.component.html',
-  styleUrls: ['./baraja.component.css']
+  styleUrls: ['./baraja.component.css'],
+  providers: [SocketService]
 })
 export class BarajaComponent implements OnInit {
   title = "app";
@@ -20,16 +23,19 @@ export class BarajaComponent implements OnInit {
   
   socket: SocketIOClient.Socket;
 
-  constructor() {
-    this.socket = io.connect('http://localhost:8080', {'forceNew':true});
+  constructor(private socketService:SocketService) {
+    
     var payload={
       autor: "Saul",
       text: "",
       verificar: false
     };
 
-    this.socket.emit('adduser', "saul", "sala1");
-    this.socket.on('numerosBaraja',(data)=>{
+    //this.socketService.getNumerosBaraja().subscribe;
+   }
+   
+
+   getNumerosBaraja(data){
     //asignacion del numero que aroja el socket a la variable 
     if (this.number==0){
       var audio = new Audio("../assets/Resources/Sonidos/1 (0).mp3");
@@ -46,32 +52,34 @@ export class BarajaComponent implements OnInit {
     this.vector.push(this.imagen); 
 
     //si aun no llega a ese numero de Baraja solo se muestra el reverso
-    
-      this.ultimo = this.vector[this.vector.length - 1];
-      
+
     if (this.vector.length < 3){
+      this.ultimo = "../assets/Resources/Baraja/0.png";
+   }else{
+      this.ultimo = this.vector[this.vector.length - 2];
+      }
+    if (this.vector.length < 4){
        this.penultimo = "../assets/Resources/Baraja/0.png";
     }else{
-      this.penultimo = this.vector[this.vector.length - 2];
+      this.penultimo = this.vector[this.vector.length - 3];
       }
-
-    if (this.vector.length < 4){
-    this.antepenultimo = "../assets/Resources/Baraja/0.png";
+    if (this.vector.length < 5){
+        this.antepenultimo = "../assets/Resources/Baraja/0.png";
     }else{
-    this.antepenultimo = this.vector[this.vector.length - 3];
-    }
+    this.antepenultimo = this.vector[this.vector.length - 4];
+      }
     console.log(this.vector.length);
-    });
-   }
-   
+    }
 
   ngOnInit() {
-    var payload={
-      autor: "Saul",
-      text: "",
-      verificar: false
-    };
-    this.socket.emit('prueba',payload);
+    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
+    this.socketService.getNumerosBaraja().subscribe(response => {
+      this.getNumerosBaraja(response);
+    });
+
+    this.socketService.getEstado().subscribe(response => {
+      console.log(response);
+    });
   } 
 
 }

@@ -28,7 +28,7 @@ export class LobbyComponent implements OnInit {
     this.socketService.addUser("adrian" , "Sala-PRO");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
-      console.log(this.Salas);
+      //console.log(this.Salas);
     });
     this.getSalas();
   }
@@ -42,9 +42,10 @@ export class LobbyComponent implements OnInit {
 
   }
 
-  ingresarSala(){
+  ingresarSala(nombreSala){
     //ESTO SE TIENE QUE DESCOMENTAR
     //this.socketService.addUser(usuario , nombreSala);
+    localStorage.setItem('nombreSala',JSON.stringify(nombreSala));
     this.router.navigate(['/partida']);
   }
 

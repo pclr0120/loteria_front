@@ -47,7 +47,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
   }
   ngOnInit() {
     //ESTO SE VA A QUITAR ES PARA PRUEBAS NADA MAS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-    localStorage.setItem('identity',JSON.stringify("Adrian"));
+    localStorage.setItem('identity',JSON.stringify('adrian'));
 
 
     this.RegistroNuevaPartidaForm = this.formBuilder.group(
@@ -79,7 +79,8 @@ constructor(private router: Router, private SalasService: SalasService, private 
         this.SalasService.postNuevaPartida(this.nuevapartida)
           .subscribe(newpres => { 
             console.log(newpres);
-            this.socketService.addUser(localStorage.getItem('identity') , this.nuevapartida.nombreSala);
+            this.socketService.addUser(JSON.parse(localStorage.getItem('identity')) , this.nuevapartida.nombreSala);
+            //this.socketService.EmitirEstadoPartida();
             this.partida();
           })
         console.log(this.nuevapartida)
@@ -103,7 +104,9 @@ constructor(private router: Router, private SalasService: SalasService, private 
     return guardarsala;
   }
 
-  partida() {       
+  partida() {
+    this.socketService.iniciarPartida();
+    localStorage.setItem('nombreSala',JSON.stringify(this.nuevapartida.nombreSala));
     this.router.navigate(['/partida'])
 
   }

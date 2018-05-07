@@ -3,41 +3,37 @@ import * as io from "socket.io-client";
 import { isEmpty } from 'rxjs/operator/isEmpty';
 import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
+import { SocketService } from '../servicios/socket.service';
 var socket = io.connect('http://localhost:8080', {'forceNew':true});
 
 @Component({
   selector: 'app-carta',
   templateUrl: './carta.component.html',
-  styleUrls: ['./carta.component.css']
+  styleUrls: ['./carta.component.css'],
+  providers: [SocketService]
 })
 export class CartaComponent implements OnInit {
+  chorro: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  arreglo = new Array();
   algo = "";
   NumCarta = 1;
   Carta: any[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   Selec: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   cartasAverificar:any[]=[0,0,0,0];
-  constructor() {
-    socket = io.connect('http://localhost:8080', {'forceNew':true});
-    var payload={
-      autor: "Saul",
-      text: "Hola soy texto",
-      verificar: false
-    };
 
+  payload = {
+    autor: "Saul",
+    text: "",
+    verificar: false
+  };
 
-    socket.emit('adduser', "saul", "sala1");
-
-    socket.on('jugada',function(data) {
-      console.log(data);
-      if(data.jugada=="Chorro" && data.verificar==true){
-        
-      }
-    });
+  constructor(private socketService:SocketService) {
     //socket.emit('',payload);
+    this.socketService.conexionEscucha( JSON.parse(localStorage.getItem('nombreSala')));
    }
 
   ngOnInit() {
-
+    
   }
 
 //
@@ -90,241 +86,101 @@ export class CartaComponent implements OnInit {
   // el arreglo son las cartas con las que se hicieron chorrro 
   //el unico que no manda un arreglo de 4 es  la llena es de 16 
 
-    Chorro():any[]{
-      var payload={
-        autor: "Saul",
-        text: "",
-        verificar: false
-        };
-          this.cartasAverificar.length=0;
-          
-          var x=0;
-              for(var i=0; i< this.Selec.length;i++ ){
-            
-                    if(i<4 && this.Selec[i]==1)
-                    {
-              
-                      this.cartasAverificar[i]=this.Carta[i];
-                  
-                      if(this.cartasAverificar.length>3 &&this.Selec[0]!=0 && this.Selec[1]!=0 && this.Selec[2]!=0 && this.Selec[3]!=0)
-                      {
-                        console.log("chorro1");
-                        var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                          return this.cartasAverificar;
-                      }
-                        else
-                              x=x+1;
-                      if(x>0 && i==3)
-                      {
-                                this.cartasAverificar=[];
-                                console.log("fallido",this.cartasAverificar);
-                                x=0;
-                      }
-                            
-
-                      
-                    }
-
-                    //chorro2
-                    if(i<8 && this.Selec[i]==1)
-                    {
-              
-                      this.cartasAverificar[i]=this.Carta[i];
-                  
-                      if(this.cartasAverificar.length>3 &&this.Selec[4]!=0 && this.Selec[5]!=0 && this.Selec[6]!=0 && this.Selec[7]!=0)
-                      {
-                        console.log("chorro2");
-                        var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                          return this.cartasAverificar;
-                      }
-                        else
-                              x=x+1;
-                      if(x>0 && i==7)
-                      {
-
-                                this.cartasAverificar=[];
-                                console.log("fallido",this.cartasAverificar);
-                                x=0;
-                      }
-                            
-
-                      
-                    }
-                      //chorro3
-                      if(i<11 && this.Selec[i]==1)
-                      {
-                
-                        this.cartasAverificar[i]=this.Carta[i];
-                    
-                        if(this.cartasAverificar.length>3 &&this.Selec[8]!=0 && this.Selec[9]!=0 && this.Selec[10]!=0 && this.Selec[11]!=0)
-                        {
-                          console.log("chorro3");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                          else
-                                x=x+1;
-                        if(x>0 && i==11)
-                        {
+  public Chorro(){
     
-                                  this.cartasAverificar=[];
-                                  console.log("fallido",this.cartasAverificar);
-                                  x=0;
-                        }
-                              
-    
-                        
-                      }
-                      if(i<16 && this.Selec[i]==1)
-                      {
-                
-                        this.cartasAverificar[i]=this.Carta[i];
-                    
-                        if(this.cartasAverificar.length>3 &&this.Selec[12]!=0 && this.Selec[13]!=0 && this.Selec[14]!=0 && this.Selec[15]!=0)
-                        {
-                          console.log("chorro4");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                          else
-                                x=x+1;
-                        if(x>0 && i==15)
-                        {
-    
-                                  this.cartasAverificar=[];
-                                  console.log("fallido",this.cartasAverificar);
-                                  x=0;
-                        }
-                              
-    
-                        
-                      }
-                  
-                      
-                    
-                        if(this.Selec[0]!=0 && this.Selec[4]!=0 && this.Selec[8]!=0 && this.Selec[12]!=0)
-                        {
-                          console.log("chorro5");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        if(this.Selec[1]!=0 && this.Selec[5]!=0 && this.Selec[9]!=0 && this.Selec[13]!=0)
-                        {
-                          console.log("chorro6");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        if(this.Selec[2]!=0 && this.Selec[6]!=0 && this.Selec[10]!=0 && this.Selec[14]!=0)
-                        {
-                          console.log("chorro7");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        if(this.Selec[3]!=0 && this.Selec[7]!=0 && this.Selec[11]!=0 && this.Selec[15]!=0)
-                        {
-                          console.log("chorro8");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        if(this.Selec[0]!=0 && this.Selec[5]!=0 && this.Selec[10]!=0 && this.Selec[15]!=0)
-                        {
-                          console.log("chorro9");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        if(this.Selec[3]!=0 && this.Selec[6]!=0 && this.Selec[9]!=0 && this.Selec[12]!=0)
-                        {
-                          console.log("chorro10");
-                          var chorro = new Array();
-                        chorro[0]= this.cartasAverificar;
-                        socket.emit('verificarChorro',payload,chorro,this.algo);
-                            return this.cartasAverificar;
-                        }
-                        
-                              
-    
-                        
-                      
-              }
+        this.cartasAverificar.length=0;
         
-
-              return null;
-          
-          
-          
-
-  }
-
-    Centro():any[]{
-  
-      if(this.Selec[5]!=0 && this.Selec[6]!=0 && this.Selec[9]!=0 && this.Selec[10]!=0)
-      {
-        console.log("centro");
-        this.cartasAverificar[0]=this.Carta[5];
-        this.cartasAverificar[1]=this.Carta[6];
-        this.cartasAverificar[2]=this.Carta[9];
-        this.cartasAverificar[3]=this.Carta[10];
-          return this.cartasAverificar;
-      }else
-      console.log("El centro no esta completo");
-      
-
-
-    }
-
-
-    Esquinas():any[]{
+        this.chorro = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        for(var i = 0; i<this.Carta.length;i++){
+          if(this.Selec[i] == 1){
+            this.chorro[i] = this.Carta[i];
+          }else{
+            this.chorro[i] = 0;
+          }
+        }
     
-      if(this.Selec[0]!=0 && this.Selec[3]!=0 && this.Selec[12]!=0 && this.Selec[15]!=0)
-      {
-        console.log("Esquinas");
-        this.cartasAverificar[0]=this.Carta[0];
-        this.cartasAverificar[1]=this.Carta[3];
-        this.cartasAverificar[2]=this.Carta[11];
-        this.cartasAverificar[3]=this.Carta[15];
-          return this.cartasAverificar;
-      }else
-      console.log("Las esquinas no estan completas");
-      
-
-
+        this.arreglo[0] = [this.chorro[0],this.chorro[1],this.chorro[2],this.chorro[3]]; 
+        this.arreglo[1] = [this.chorro[4],this.chorro[5],this.chorro[6],this.chorro[7]];
+        this.arreglo[2] = [this.chorro[8],this.chorro[9],this.chorro[10],this.chorro[11]];
+        this.arreglo[3] = [this.chorro[12],this.chorro[13],this.chorro[14],this.chorro[15]];
+        this.arreglo[4] = [this.chorro[0],this.chorro[4],this.chorro[8],this.chorro[12]];
+        this.arreglo[5] = [this.chorro[1],this.chorro[5],this.chorro[9],this.chorro[13]];
+        this.arreglo[6] = [this.chorro[2],this.chorro[6],this.chorro[10],this.chorro[14]];
+        this.arreglo[7] = [this.chorro[3],this.chorro[7],this.chorro[11],this.chorro[15]];
+        this.arreglo[8] = [this.chorro[0],this.chorro[5],this.chorro[10],this.chorro[15]];
+        this.arreglo[9] = [this.chorro[12],this.chorro[9],this.chorro[6],this.chorro[3]];
+    
+        //VERIFICAR CHORRO
+        this.socketService.verificarChorro(this.payload, this.arreglo);
+      } 
+    
+    Centro(){
+        if(this.Selec[5] == 1){
+          this.cartasAverificar[0]=this.Carta[5];
+        }else{
+          this.cartasAverificar[0]=0;
+        }
+        if(this.Selec[6] == 1){
+          this.cartasAverificar[1]=this.Carta[6];
+        }else{
+          this.cartasAverificar[1]=0;
+        }
+        if(this.Selec[9] == 1){
+          this.cartasAverificar[2]=this.Carta[9];
+        }else{
+          this.cartasAverificar[2]=0;
+        }
+        if(this.Selec[10] == 1){
+          this.cartasAverificar[3]=this.Carta[10];
+        }else{
+          this.cartasAverificar[3]=0;
+        }
+        
+        //VERIFICAR centro
+        this.socketService.verificarCentro(this.payload, this.cartasAverificar);
     }
-
-    Llena():any[]{
-      var x=0;
-      for(var i=0; i< this.Selec.length;i++ ){
-        if(this.Selec[i])
-            x=x+1;
+    
+    
+    
+    
+    Esquinas(){
+      if(this.Selec[0] == 1){
+        this.cartasAverificar[0]=this.Carta[0];
+      }else{
+        this.cartasAverificar[0]=0;
+      }
+      if(this.Selec[3] == 1){
+        this.cartasAverificar[1]=this.Carta[3];
+      }else{
+        this.cartasAverificar[1]=0;
+      }
+      if(this.Selec[12] == 1){
+        this.cartasAverificar[2]=this.Carta[12];
+      }else{
+        this.cartasAverificar[2]=0;
+      }
+      if(this.Selec[15] == 1){
+        this.cartasAverificar[3]=this.Carta[15];
+      }else{
+        this.cartasAverificar[3]=0;
       }
 
-      
-      if(x==16)
-      {
-        console.log("llena");
-        return this.Carta;
+      //VERIFICAR ESQUINAS
+      this.socketService.verificarEsquinas(this.payload, this.cartasAverificar);
+    }
+    
+    Llena(){
+      var llenas = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+      for(var i =0; i<this.Selec.length;i++){
+        if(this.Selec[i]==1){
+          llenas[i]=this.Carta[i];
+        }else{
+          llenas[i]=0;
+        }
       }
-      else console.log("falta llenar la carta");
-      
 
-
+      //VERIFICAR LLENAS
+      this.socketService.verificarLlenas(this.payload, llenas);
     }
     
 

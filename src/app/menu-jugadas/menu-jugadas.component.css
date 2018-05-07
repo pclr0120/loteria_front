@@ -1,35 +1,26 @@
 
 .Titulo{
-
 font-size: 25px;
 color: #E0D9D9;
 position:absolute;
 left: 0%;
-top: 5%;
-text-decoration-color: #B81A1A;
+top: 1%;
 }
-
-.card-container.card {
-   
-    position:absolute;
-    left: 0%;
-    top: 12%;
-
+.card-container.card { 
+  position:absolute;
+  height: 88%;
+  left: 0%;
+  top: 12%;
+  background-image: url(../../assets/Resources/fondo_rojo.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom; 
 }
-
-
-
-/*
-* Card component
-*/
 .card {
    
  width: 20% ;
  height: 100%;
 background-color: rgba(173, 10, 10, 0.849);
 /* just in case there no content*/
-
-
 
 /* shadows and rounded borders */
 -moz-border-radius: 2px;
@@ -39,24 +30,20 @@ border-radius: 2px;
 -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 box-shadow: 0px 5px 2px rgb(3, 1, 1);
 }
-.card-container2.card {
-    width: 100%;
-   
-    max-height: 20%;
-    position:absolute;
-  
-    }
+.card2 card-container2{
+  width: 100%;
+  max-height: 20%;
+  margin-top: 0%;
+}
+
 .card2 {
-
-    background-color: rgba(8, 17, 3, 0.37);
-    /* just in case there no content*/
-    position:absolute;
-    left: 0%;
-    right: 0%;
-    top: 15%;
-    text-align: center;
-  
-
+  background-color: rgba(8, 17, 3, 0.37);
+  /* just in case there no content*/
+  position:absolute;
+  left: 0%;
+  right: 0%;
+  top: 5%;
+  text-align: center;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -64,12 +51,7 @@ box-shadow: 0px 5px 2px rgb(3, 1, 1);
     -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 5px 2px rgb(3, 1, 1);
-    }
-
-
-
-
-
+}
 
 .boton{
    
