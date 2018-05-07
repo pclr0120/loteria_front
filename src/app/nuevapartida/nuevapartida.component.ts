@@ -22,6 +22,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
   nuevapartida: any;
   id: any;
   public identity;
+  public cartasSelec = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //HOLIIIIII
 
   onValueChanged(data?: any) {
     if (!this.RegistroNuevaPartidaForm) { return; }
