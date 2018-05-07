@@ -52,20 +52,22 @@ export class BarajaComponent implements OnInit {
     this.vector.push(this.imagen); 
 
     //si aun no llega a ese numero de Baraja solo se muestra el reverso
-    
-      this.ultimo = this.vector[this.vector.length - 1];
-      
+
     if (this.vector.length < 3){
+      this.ultimo = "../assets/Resources/Baraja/0.png";
+   }else{
+      this.ultimo = this.vector[this.vector.length - 2];
+      }
+    if (this.vector.length < 4){
        this.penultimo = "../assets/Resources/Baraja/0.png";
     }else{
-      this.penultimo = this.vector[this.vector.length - 2];
+      this.penultimo = this.vector[this.vector.length - 3];
       }
-
-    if (this.vector.length < 4){
-    this.antepenultimo = "../assets/Resources/Baraja/0.png";
+    if (this.vector.length < 5){
+        this.antepenultimo = "../assets/Resources/Baraja/0.png";
     }else{
-    this.antepenultimo = this.vector[this.vector.length - 3];
-    }
+    this.antepenultimo = this.vector[this.vector.length - 4];
+      }
     console.log(this.vector.length);
     }
 
