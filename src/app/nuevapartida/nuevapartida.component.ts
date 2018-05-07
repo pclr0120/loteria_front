@@ -80,7 +80,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
           .subscribe(newpres => { 
             console.log(newpres);
             this.socketService.addUser(localStorage.getItem('identity') , this.nuevapartida.nombreSala);
-            this.socketService.EmitirEstadoPartida();
+            //this.socketService.EmitirEstadoPartida();
             this.partida();
           })
         console.log(this.nuevapartida)
@@ -104,7 +104,8 @@ constructor(private router: Router, private SalasService: SalasService, private 
     return guardarsala;
   }
 
-  partida() {       
+  partida() {
+    this.socketService.iniciarPartida();
     this.router.navigate(['/partida'])
 
   }

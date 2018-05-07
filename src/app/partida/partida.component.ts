@@ -16,9 +16,9 @@ export class PartidaComponent implements OnInit {
   ngOnInit() {
     console.log("data");
     //this.socketService.addUser("adrian" , "Sala8");
-    this.socketService.getEstadoPartida().subscribe(data => {
+    /*this.socketService.getEstadoPartida().subscribe(data => {
       console.log(data);
-    });
+    });*/
   }
 
 }

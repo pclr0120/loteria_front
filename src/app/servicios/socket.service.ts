@@ -41,7 +41,7 @@ export class SocketService {
   }
 
   //EMITIR EL ESTADO DE LA SALA
-  EmitirEstadoPartida(){
+  /*EmitirEstadoPartida(){
     this.socket.emit('Estado');
   }
 
@@ -55,10 +55,60 @@ export class SocketService {
 
     });
     return observable;
+  }*/
+
+  //Emitir evento que comienza la partida
+  iniciarPartida(){
+    this.socket.emit('Estado');
   }
 
+  getEstado(){
+    let observable = new Observable(observer => {
+      //this.socket.emit('Salas');
+      this.socket.on('EstadoPartida', function(number){
+        //console.log("socket " + salas);
+        observer.next(number);
+      });
 
+    });
+    return observable;
+  }
 
+  getNumerosBaraja(){
+    let observable = new Observable(observer => {
+      //this.socket.emit('Salas');
+      this.socket.on('numerosBaraja', function(number){
+        //console.log("socket " + salas);
+        observer.next(number);
+      });
+
+    });
+    return observable;
+  }
+
+  conexionEscucha(nombreSala){
+    this.socket.emit('ConexionEscuchar',nombreSala);
+  }
+
+  //FUNCION PARA VERIFICAR CHORRO
+  verificarChorro(payload, arreglo){
+    this.socket.emit('verificarChorro',payload,arreglo);
+  }
+
+  //FUNCION PARA VERIFICAR CENTRO
+  verificarCentro(payload, arreglo){
+    this.socket.emit('verificarCentro',payload,arreglo);
+  }
+
+  //FUNCION PARA VERIFICAR ESQUINAS
+  verificarEsquinas(payload, arreglo){
+    this.socket.emit('verificarEsquinas',payload,arreglo);
+  }
+
+  //FUNCION PARA VERIFICAR LLENAS
+  verificarLlenas(payload, arreglo){
+    this.socket.emit('verificarLlenas',payload,arreglo);
+  }
   
 
 }
