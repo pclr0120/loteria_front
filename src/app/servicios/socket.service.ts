@@ -22,9 +22,23 @@ export class SocketService {
     this.socket.emit('desconectar');
   }
 
+  AgregarCartaSelect(idCarta,nombreSala){
+    this.socket.emit('AgregarCartaSelect',idCarta,nombreSala);
+  }
   //UNIR USUARIOS A UNA SALA
   addUser(username, nombreSala){
     this.socket.emit('adduser', username, nombreSala);
+  }
+
+  getCartasSelect(nombreSala){
+    let observable = new Observable(observer => {
+      this.socket.emit('RetornarCartasSelect',nombreSala);
+      this.socket.on('CartasSeleccionadas', function(Cartas){
+        //console.log("socket " + salas);
+        observer.next(Cartas);
+      });
+    });
+    return observable;
   }
 
   //Obtener salas activas

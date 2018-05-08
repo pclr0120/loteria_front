@@ -27,7 +27,7 @@ export class LobbyComponent implements OnInit {
   }
   ngOnInit() {
     //ESTO SE TIENE QUE QUITAR NADA MAS ESTA PARA PRUEBAS
-    this.socketService.addUser("adrian" , "Sala-PRO");
+    this.socketService.addUser("" , "");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
       //console.log(this.Salas);
@@ -46,10 +46,12 @@ export class LobbyComponent implements OnInit {
 
   ingresarSala(id_carta){
     //ESTO SE TIENE QUE DESCOMENTAR
-    //this.socketService.addUser(usuario , nombreSala);
+    this.socketService.addUser("" , this.sala);
     console.log("ID CARTA: " + id_carta);
     console.log("Sala " + this.sala);
     localStorage.setItem('nombreSala',JSON.stringify(this.sala));
+    localStorage.setItem('idCarta',JSON.stringify(id_carta));
+    console.log("Sala " + JSON.parse(localStorage.getItem('nombreSala')));
     this.router.navigate(['/partida']);
   }
 
