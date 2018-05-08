@@ -73,5 +73,9 @@ export class LobbyComponent implements OnInit {
 
   guardarSala(sala){
     this.sala = sala;
+    console.log("SALAAAAAAAAAAAAA: " + this.sala);
+    this.socketService.getCartasSelect(this.sala).subscribe(response => {
+      console.log(response);
+    });
   }
 }

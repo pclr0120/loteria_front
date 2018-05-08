@@ -39,9 +39,11 @@ export class SocketService {
   getCartasSelect(nombreSala){
     let observable = new Observable(observer => {
       this.socket.emit('RetornarCartasSelect',nombreSala);
-      this.socket.on('CartasSeleccionadas', function(Cartas){
+      this.socket.on('CartasSeleccionadas', function(data){
         //console.log("socket " + salas);
-        observer.next(Cartas);
+        console.log("Entroooo");
+        console.log(data);
+        observer.next(data);
       });
     });
     return observable;
@@ -153,6 +155,5 @@ export class SocketService {
   verificarLlenas(payload, arreglo){
     this.socket.emit('verificarLlenas',payload,arreglo);
   }
-  
 
 }
