@@ -50,7 +50,7 @@ export class LobbyComponent implements OnInit {
     console.log("ID CARTA: " + id_carta);
     console.log("Sala " + this.sala);
     localStorage.setItem('nombreSala',JSON.stringify(this.sala));
-    localStorage.setItem('idCarta',JSON.stringify(id_carta));
+    localStorage.setItem('idCarta',JSON.stringify(id_carta + 1));
     console.log("Sala " + JSON.parse(localStorage.getItem('nombreSala')));
     this.router.navigate(['/partida']);
   }
