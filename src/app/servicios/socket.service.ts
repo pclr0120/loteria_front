@@ -18,6 +18,8 @@ export class SocketService {
     });
    }
    
+   
+
   Desconectar(){
     this.socket.emit('desconectar');
   }
@@ -48,6 +50,18 @@ export class SocketService {
       this.socket.on('SalasInf', function(salas){
         //console.log("socket " + salas);
         observer.next(salas);
+      });
+
+    });
+    return observable;
+  }
+
+  cacharMensajes(){
+    let observable = new Observable(observer => {
+     
+      this.socket.on('messages', function(data){
+        //console.log("socket " + salas);
+        observer.next(data);
       });
 
     });

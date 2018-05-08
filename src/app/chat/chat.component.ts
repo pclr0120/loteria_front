@@ -3,12 +3,14 @@ import * as io from "socket.io-client";
 import { isEmpty } from 'rxjs/operator/isEmpty';
 import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
+import { SocketService } from '../servicios/socket.service';
 var socket = io.connect('http://localhost:8080', {'forceNew':true});
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  providers: [SocketService]
 })
 export class ChatComponent implements OnInit {
 
@@ -27,34 +29,43 @@ export class ChatComponent implements OnInit {
   }]
 
   socket: SocketIOClient.Socket;
-  constructor() {
+  constructor(private socketService:SocketService) {
     var socket = io.connect('http://localhost:8080', {'forceNew':true});
     var payload={
       autor: "Saul",
       text: "Hola soy texto",
       verificar: false
     };
+   }
 
-    socket.emit('adduser', "saul", "sala2");
-
-    socket.emit('new-message',payload);
-
-
-    socket.on('messages',(data)=>{
-      
-    //asignacion del numero que aroja el socket a la variable 
+   cacharMensajes(data){
+     console.log(data);
     this.str=data.autor + ": "+data.text;
     this.messages.push({
       text:this.str,
       self:false
     })
-    
-    });
+   }
 
-    socket.emit('new-message',payload);
+   cacharJugadas(data){
+    console.log(data);
+      if(data[0].valido){
+        this.str = "Loteria: El jugador "+data[0].userName + " hizo "+data[0].jugada;
+        this.messages.push({
+          text:this.str,
+          self:false
+        })
+      }
    }
 
   ngOnInit() {
+    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
+    this.socketService.cacharMensajes().subscribe(response => {
+      this.cacharMensajes(response);
+    });
+    this.socketService.getJugada().subscribe(response=>{
+      this.cacharJugadas(response);
+    });
   }
 
   render(data){
