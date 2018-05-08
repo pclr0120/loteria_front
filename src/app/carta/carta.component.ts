@@ -5,6 +5,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
 import { SocketService } from '../servicios/socket.service';
 var socket = io.connect('http://localhost:8080', {'forceNew':true});
+import { CartaService } from '../servicios/carta.service';
 
 @Component({
   selector: 'app-carta',
@@ -17,9 +18,11 @@ export class CartaComponent implements OnInit {
   arreglo = new Array();
   algo = "";
   NumCarta = 1;
-  Carta: any[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  Carta: any[] = [0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   Selec: any[] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   cartasAverificar:any[]=[0,0,0,0];
+
+  public ArrgeloCarta: any[];
 
   payload = {
     autor: "Saul",
@@ -27,13 +30,44 @@ export class CartaComponent implements OnInit {
     verificar: false
   };
 
-  constructor(private socketService:SocketService) {
+  constructor(private socketService:SocketService,
+    private cartaServicio:CartaService) {
     //socket.emit('',payload);
     this.socketService.conexionEscucha( JSON.parse(localStorage.getItem('nombreSala')));
    }
 
   ngOnInit() {
-    
+    this.cartaServicio.getCarta(JSON.parse(localStorage.getItem('idCarta'))).subscribe(
+      response=>{
+        if(response){
+          this.ArrgeloCarta = response;
+          //console.log("Holi");
+          //console.log(this.ArrgeloCarta);
+          this.NumCarta = this.ArrgeloCarta[0].idcarta;
+          this.Carta[0] = this.ArrgeloCarta[0].p1;
+          this.Carta[1] = this.ArrgeloCarta[0].p2;
+          this.Carta[2] = this.ArrgeloCarta[0].p3;
+          this.Carta[3] = this.ArrgeloCarta[0].p4;
+          this.Carta[4] = this.ArrgeloCarta[0].p5;
+          this.Carta[5] = this.ArrgeloCarta[0].p6;
+          this.Carta[6] = this.ArrgeloCarta[0].p7;
+          this.Carta[7] = this.ArrgeloCarta[0].p8;
+          this.Carta[8] = this.ArrgeloCarta[0].p9;
+          this.Carta[9] = this.ArrgeloCarta[0].p10;
+          this.Carta[10] = this.ArrgeloCarta[0].p11;
+          this.Carta[11] = this.ArrgeloCarta[0].p12;
+          this.Carta[12] = this.ArrgeloCarta[0].p13;
+          this.Carta[13] = this.ArrgeloCarta[0].p14;
+          this.Carta[14] = this.ArrgeloCarta[0].p15;
+          this.Carta[15] = this.ArrgeloCarta[0].p16;
+        }else{
+          this.ArrgeloCarta=[];
+        }
+      },
+      error=>{
+        console.log(<any>error);
+      }
+    );
   }
 
 //
