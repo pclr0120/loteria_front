@@ -39,6 +39,7 @@ export class SocketService {
   getCartasSelect(nombreSala){
     let observable = new Observable(observer => {
       this.socket.emit('RetornarCartasSelect',nombreSala);
+      console.log("Entroooo");
       this.socket.on('CartasSeleccionadas', function(data){
         //console.log("socket " + salas);
         console.log("Entroooo");

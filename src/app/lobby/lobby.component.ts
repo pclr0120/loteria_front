@@ -30,6 +30,7 @@ export class LobbyComponent implements OnInit {
     this.socketService.addUser("" , "");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
+      
       //console.log(this.Salas);
     });
     this.getSalas();
@@ -48,6 +49,7 @@ export class LobbyComponent implements OnInit {
     //ESTO SE TIENE QUE DESCOMENTAR
     this.socketService.addUser("" , this.sala);
     console.log("ID CARTA: " + id_carta);
+    this.socketService.AgregarCartaSelect(id_carta,this.sala);
     console.log("Sala " + this.sala);
     localStorage.setItem('nombreSala',JSON.stringify(this.sala));
     localStorage.setItem('idCarta',JSON.stringify(id_carta + 1));
@@ -74,8 +76,10 @@ export class LobbyComponent implements OnInit {
   guardarSala(sala){
     this.sala = sala;
     console.log("SALAAAAAAAAAAAAA: " + this.sala);
-    this.socketService.getCartasSelect(this.sala).subscribe(response => {
-      console.log(response);
-    });
+    for(var i=0;i<this.Salas.length;i++){
+      if(this.Salas[i].nombreSala == this.sala){
+        this.cartasSelec = this.Salas[i].cartasSelect;
+      }
+    }
   }
 }
