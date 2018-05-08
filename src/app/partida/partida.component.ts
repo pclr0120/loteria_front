@@ -18,7 +18,7 @@ export class PartidaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartaServicio.getCarta(JSON.parse(localStorage.getItem('idCarta'))).subscribe(
+    /*this.cartaServicio.getCarta(JSON.parse(localStorage.getItem('idCarta'))).subscribe(
       response=>{
         if(response){
           this.ArrgeloCarta = response;
@@ -30,7 +30,7 @@ export class PartidaComponent implements OnInit {
       error=>{
         console.log(<any>error);
       }
-    );
+    );*/
     //this.socketService.addUser("adrian" , "Sala8");
     /*this.socketService.getEstadoPartida().subscribe(data => {
       console.log(data);
