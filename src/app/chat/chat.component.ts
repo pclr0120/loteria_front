@@ -4,7 +4,6 @@ import { isEmpty } from 'rxjs/operator/isEmpty';
 import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
 import { SocketService } from '../servicios/socket.service';
-var socket = io.connect('http://localhost:8080', {'forceNew':true});
 
 @Component({
   selector: 'app-chat',
@@ -30,7 +29,6 @@ export class ChatComponent implements OnInit {
 
   socket: SocketIOClient.Socket;
   constructor(private socketService:SocketService) {
-    var socket = io.connect('http://localhost:8080', {'forceNew':true});
     var payload={
       autor: "Saul",
       text: "Hola soy texto",
@@ -85,11 +83,12 @@ export class ChatComponent implements OnInit {
 
   //creacion del archivo Json "mensaje" 
     var mensaje={
-      autor:document.getElementById('username'),
+      autor: JSON.parse(localStorage.getItem('identity')),
       text:this.replyMessage,
       self:false
     } 
-    socket.emit('new-message', mensaje);
+    this.socketService.NewMessage(mensaje);
+    
     console.log(mensaje);
 
   //agrega el mensaje al arreglo de arriva para mostrarlo en pantalla

@@ -24,6 +24,10 @@ export class SocketService {
     this.socket.emit('desconectar');
   }
 
+  NewMessage(mensaje){
+    this.socket.emit('new-message',mensaje);
+  }
+
   AgregarCartaSelect(idCarta,nombreSala){
     this.socket.emit('AgregarCartaSelect',idCarta,nombreSala);
   }
