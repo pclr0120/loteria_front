@@ -81,6 +81,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
           .subscribe(newpres => { 
             console.log(newpres);
             this.socketService.addUser(JSON.parse(localStorage.getItem('identity')) , this.nuevapartida.nombreSala);
+            localStorage.setItem('idCarta',JSON.stringify(id_carta + 1));
             this.socketService.AgregarCartaSelect(id_carta,this.nuevapartida.nombreSala);
             localStorage.setItem('nombreSala',JSON.stringify(this.nuevapartida.nombreSala));
 

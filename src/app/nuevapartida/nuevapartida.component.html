@@ -31,7 +31,7 @@
 
 
           <!--<button type="button" class="btn btn-primary" (click)="saveNuevaPartida()" type="submit" [disabled]="!RegistroNuevaPartidaForm.valid"data-toggle="modal" data-target=".bs-example-modal-sm">Crear sala</button>-->
-          <button type="button" class="btn btn-primary" (click)="saveNuevaPartida()" type="submit" [disabled]="!RegistroNuevaPartidaForm.valid"data-toggle="modal" href="#ModalD">Crear sala</button>
+          <button type="button" class="btn btn-primary"  [disabled]="!RegistroNuevaPartidaForm.valid"data-toggle="modal" href="#ModalD">Crear sala</button>
           <!--<a role="button" class="btn btn-primary" data-toggle="modal" href="#ModalD" >Crear sala</a>-->
           <p class="alert alert-danger" *ngIf="!RegistroNuevaPartidaForm.valid">
             por favor complete los campos
