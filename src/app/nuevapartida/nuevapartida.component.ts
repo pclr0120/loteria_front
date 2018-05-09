@@ -72,7 +72,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
     this.onValueChanged();
   }
 
-  saveNuevaPartida() {
+  saveNuevaPartida(id_carta) {
     this.SalasService.getObtenerNumSala().subscribe(
       response => {
         this.id = response[0].Max;        
@@ -81,6 +81,9 @@ constructor(private router: Router, private SalasService: SalasService, private 
           .subscribe(newpres => { 
             console.log(newpres);
             this.socketService.addUser(JSON.parse(localStorage.getItem('identity')) , this.nuevapartida.nombreSala);
+            this.socketService.AgregarCartaSelect(id_carta,this.nuevapartida.nombreSala);
+            localStorage.setItem('nombreSala',JSON.stringify(this.nuevapartida.nombreSala));
+
             //this.socketService.EmitirEstadoPartida();
             this.partida();
           })

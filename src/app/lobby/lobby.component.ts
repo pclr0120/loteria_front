@@ -78,6 +78,8 @@ export class LobbyComponent implements OnInit {
     console.log("SALAAAAAAAAAAAAA: " + this.sala);
     for(var i=0;i<this.Salas.length;i++){
       if(this.Salas[i].nombreSala == this.sala){
+        console.log(this.cartasSelec);
+        console.log(this.Salas[i].cartasSelect);
         this.cartasSelec = this.Salas[i].cartasSelect;
       }
     }
