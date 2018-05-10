@@ -1,6 +1,7 @@
 import { Component, OnInit,EventEmitter,  Output , Input } from '@angular/core';
 import * as io from "socket.io-client";
 import { SocketService } from '../servicios/socket.service';
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-menu-jugadas',
@@ -18,7 +19,7 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
   acu:any=200;
   //Verificacion de jugadas 1 para jugada verificada 0 para diponible
   JugadaV=[false,false,false,false];
-  constructor(private socketService:SocketService) {
+  constructor(private router: Router, private socketService:SocketService) {
     this.socketService.conexionEscucha( JSON.parse(localStorage.getItem('nombreSala')));
 
     var payload={
@@ -70,6 +71,12 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
       console.log(response);
     });
 
+  }
+
+  abandonar(){
+    this.socketService.Desconectar();
+    localStorage.removeItem('nombreSala');
+    this.router.navigate(['/lobby']);
   }
 
 
