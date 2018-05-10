@@ -20,7 +20,13 @@ export class ChatComponent implements OnInit {
 
   //arreglo de mensajes de ejemplo para mostrar 
   messages = [{
-    text: "Bienvenido",
+    text: "Chat",
+    self: false
+  }]
+
+  //arreglo de notificaciones de ejemplo para mostrar 
+  notificaciones = [{//Holi//Holi
+    text: "Notificaciones",
     self: false
   }]
 
@@ -46,7 +52,7 @@ export class ChatComponent implements OnInit {
     console.log(data);
     if (data[0].valido) {
       this.str = "Loteria: El jugador " + data[0].userName + " hizo " + data[0].jugada;
-      this.messages.push({
+      this.notificaciones.push({ //Holi
         text: this.str,
         self: false
       })
@@ -55,13 +61,13 @@ export class ChatComponent implements OnInit {
 
   cacharEstado(data) {
     if(data=="Iniciando Partida"){
-      this.messages = [{
+      this.notificaciones = [{ //Holi
         text: "Bienvenido",
         self: false
       }];
     }
     this.str = "Loteria: "+ data;
-      this.messages.push({
+      this.notificaciones.push({ //Holi
         text: this.str,
         self: false
       })

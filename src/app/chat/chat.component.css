@@ -10,16 +10,23 @@
     background-repeat: no-repeat;
     margin-top: 1%;
     margin-left: 81%;
-    width:18%;
-    height:100%;
+    width: 18%;
+    height: 100%;
     border: 2px solid #ccc;
-    padding: 16px;
+    padding: 16px; 
+}
+.notificaciones{
+    text-shadow: 0.5px 0.5px 1px blue;
+    font-size: 15px;
+    font-style: oblique;
+    height:250px;
+    overflow: auto;
 }
 .messages{
     text-shadow: 0.5px 0.5px 1px grey;
     font-size: 15px;
     font-style: oblique;
-    height:470px;
+    height:250px;
     overflow: auto;
 }
 .input-container{
