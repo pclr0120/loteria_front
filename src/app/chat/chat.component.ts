@@ -20,17 +20,14 @@ export class ChatComponent implements OnInit {
 
   //arreglo de mensajes de ejemplo para mostrar 
   messages = [{
-    text: "Do you like guinea pigs?",
+    text: "Bienvenido",
     self: false
-  }, {
-    text: "I love it <3",
-    self: true
   }]
 
   socket: SocketIOClient.Socket;
   constructor(private socketService: SocketService) {
     var payload = {
-      autor: "Saul",
+      autor: JSON.parse(localStorage.getItem('identity')),
       text: "Hola soy texto",
       verificar: false
     };
@@ -57,6 +54,12 @@ export class ChatComponent implements OnInit {
   }
 
   cacharEstado(data) {
+    if(data=="Iniciando Partida"){
+      this.messages = [{
+        text: "Bienvenido",
+        self: false
+      }];
+    }
     this.str = "Loteria: "+ data;
       this.messages.push({
         text: this.str,

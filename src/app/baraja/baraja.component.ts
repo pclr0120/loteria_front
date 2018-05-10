@@ -24,14 +24,15 @@ export class BarajaComponent implements OnInit {
   socket: SocketIOClient.Socket;
 
   constructor(private socketService:SocketService) {
-    
+    this.imagen = "../assets/Resources/Baraja/0.png";
+    this.ultimo = "../assets/Resources/Baraja/0.png";
+    this.penultimo = "../assets/Resources/Baraja/0.png";
+    this.antepenultimo = "../assets/Resources/Baraja/0.png";
     var payload={
       autor: "Saul",
       text: "",
       verificar: false
     };
-
-    //this.socketService.getNumerosBaraja().subscribe;
    }
    
 
@@ -71,6 +72,15 @@ export class BarajaComponent implements OnInit {
     console.log(this.vector.length);
     }
 
+    cacharEstado(res){
+      if(res=="Iniciando Partida"){
+        this.imagen = "../assets/Resources/Baraja/0.png";
+        this.ultimo = "../assets/Resources/Baraja/0.png";
+        this.penultimo = "../assets/Resources/Baraja/0.png";
+        this.antepenultimo = "../assets/Resources/Baraja/0.png";
+      }
+    }
+
   ngOnInit() {
     this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
     this.socketService.getNumerosBaraja().subscribe(response => {
@@ -78,6 +88,7 @@ export class BarajaComponent implements OnInit {
     });
 
     this.socketService.getEstado().subscribe(response => {
+      this.cacharEstado(response);
       console.log(response);
     });
   } 

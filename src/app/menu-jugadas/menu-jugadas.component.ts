@@ -52,11 +52,24 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
         }
       }
   }
+
+  cacharEstado(res){
+    if(res=="Iniciando Partida"){
+      this.JugadaV=[false,false,false,false];
+    }
+  }
+
   ngOnInit() {
     this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
     this.socketService.getJugada().subscribe(response => {
       this.getJugadaRes(response);
     });
+
+    this.socketService.getEstado().subscribe(response => {
+      this.cacharEstado(response);
+      console.log(response);
+    });
+
   }
 
 

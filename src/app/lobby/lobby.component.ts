@@ -27,7 +27,7 @@ export class LobbyComponent implements OnInit {
   }
   ngOnInit() {
     //ESTO SE TIENE QUE QUITAR NADA MAS ESTA PARA PRUEBAS
-    this.socketService.addUser("" , "");
+    this.socketService.addUser("","");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;
       
@@ -37,7 +37,7 @@ export class LobbyComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.socketService.Desconectar();
+    //this.socketService.Desconectar();
   }
 
   nuevapartida() {       
@@ -47,7 +47,7 @@ export class LobbyComponent implements OnInit {
 
   ingresarSala(id_carta){
     //ESTO SE TIENE QUE DESCOMENTAR
-    this.socketService.addUser("" , this.sala);
+    this.socketService.addUser(JSON.parse(localStorage.getItem('identity')), this.sala);
     console.log("ID CARTA: " + id_carta);
     this.socketService.AgregarCartaSelect(id_carta,this.sala);
     console.log("Sala " + this.sala);
