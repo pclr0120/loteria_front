@@ -31,6 +31,11 @@ export class SocketService {
   AgregarCartaSelect(idCarta,nombreSala){
     this.socket.emit('AgregarCartaSelect',idCarta,nombreSala);
   }
+
+  EliminarCartaSelect(idCarta,nombreSala){
+    this.socket.emit('EliminarCartaSelect',idCarta,nombreSala);
+  }
+
   //UNIR USUARIOS A UNA SALA
   addUser(username, nombreSala){
     this.socket.emit('adduser', username, nombreSala);

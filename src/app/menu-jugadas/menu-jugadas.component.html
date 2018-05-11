@@ -31,7 +31,27 @@
         </a>
     </button>
 
-    <button  class="btn btn-warning" (click)="abandonar()" id="btn-abandonar">Abandonar sala</button>
+    <!--<button  class="btn btn-warning" (click)="abandonar()" id="btn-abandonar">Abandonar sala</button>-->
+    <a role="button" class="btn btn-warning" data-toggle="modal" href="#modal-dialog-abandonar" id="btn-abandonar">Abandonar sala</a>
+
+    <!--DIALOGOS DE CONFIRMACION-->
+    <div id="modal-dialog-abandonar" class="modal fade">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmación</h3>
+                <a  data-dismiss="modal" aria-hidden="true" class="close" style="float:right;font-size: 28px;">×</a>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro que desea abandonar la sala?</p>
+            </div>
+            <div class="modal-footer">
+            <input type="button" data-dismiss="modal" (click)="abandonar()" value="Si" style="float:right;width:50px;" class="btn btn-primary">
+            <input type="button" data-dismiss="modal" value="No" style="float:right;width:50px;" class="btn btn-danger">
+            </div>
+        </div>
+        </div>
+    </div>
                     
                 
 

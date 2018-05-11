@@ -75,6 +75,8 @@ Jugadas:any[]=["CHORRO","CENTRO","4 ESQUINAS","LLENA"];
 
   abandonar(){
     this.socketService.Desconectar();
+    console.log("ID CARTA: " + JSON.parse(localStorage.getItem('idCarta')));
+    this.socketService.EliminarCartaSelect(JSON.parse(localStorage.getItem('idCarta')) - 1,JSON.parse(localStorage.getItem('nombreSala')));
     localStorage.removeItem('nombreSala');
     this.router.navigate(['/lobby']);
   }
