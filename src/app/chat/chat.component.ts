@@ -68,7 +68,11 @@ export class ChatComponent implements OnInit {
 
   cacharEstado(data) {
     if(data=="Iniciando Partida"){
-      this.notificaciones = [{ //Holi
+      this.notificaciones = [{//Holi//Holi
+        text: "Notificaciones",
+        self: false
+      }]
+      this.messages = [{ //Holi
         text: "Bienvenido",
         self: false
       }];
