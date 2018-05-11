@@ -40,12 +40,19 @@ export class ChatComponent implements OnInit {
   }
 
   cacharMensajes(data) {
-    console.log(data);
-    this.str = data.autor + ": " + data.text;
-    this.messages.push({
-      text: this.str,
-      self: false
-    })
+    if(data.autor == JSON.parse(localStorage.getItem('identity'))){
+      this.str = data.autor + ": " + data.text;
+      this.messages.push({
+        text: this.str,
+        self: true
+      })
+    }else{ 
+      this.str = data.autor + ": " + data.text;
+      this.messages.push({
+        text: this.str,
+        self: false
+      })
+    }
   }
 
   cacharJugadas(data) {
@@ -111,13 +118,6 @@ export class ChatComponent implements OnInit {
       }
       this.socketService.NewMessage(mensaje);
 
-      console.log(mensaje);
-
-      //agrega el mensaje al arreglo de arriva para mostrarlo en pantalla
-      this.messages.push({
-        text: this.replyMessage + "_" + this.time.getHours() + ":" + this.time.getMinutes(),
-        self: true
-      })
       //limpieza del texbox
       this.replyMessage = "";
     }
