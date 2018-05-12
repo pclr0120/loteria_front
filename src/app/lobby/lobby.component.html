@@ -22,20 +22,22 @@
             </thead>
             <tbody>
               <tr *ngFor=" let sala of Salas; let i = index">
-                <ng-container *ngFor="let sala_bd of Salas_BD" >
-                    <td *ngIf="sala.nombreSala == sala_bd.nombreSala" scope="row">{{sala_bd.idSala}}</td>
-                </ng-container>          
-                <td align="center">{{sala.nombreSala}}</td>
-                <ng-container *ngFor="let sala_bd of Salas_BD" >
-                    <td *ngIf="sala.nombreSala == sala_bd.nombreSala && sala_bd.modo ==1">Privada</td>
-                    <td *ngIf="sala.nombreSala == sala_bd.nombreSala && sala_bd.modo ==2">Pública</td>
+                <ng-container *ngIf="sala.nombreSala !=''" >
+                  <ng-container *ngFor="let sala_bd of Salas_BD" >
+                      <td *ngIf="sala.nombreSala == sala_bd.nombreSala" scope="row">{{sala_bd.idSala}}</td>
+                  </ng-container>          
+                  <td align="center">{{sala.nombreSala}}</td>
+                  <ng-container *ngFor="let sala_bd of Salas_BD" >
+                      <td *ngIf="sala.nombreSala == sala_bd.nombreSala && sala_bd.modo ==1">Privada</td>
+                      <td *ngIf="sala.nombreSala == sala_bd.nombreSala && sala_bd.modo ==2">Pública</td>
+                  </ng-container>
+                  <td align="center">{{sala.Estado}}</td>
+                  <td align="center">{{sala.numJugadores}} / 16</td>
+                  <td> 
+                    <!--<button (click)="ingresarSala(sala.nombreSala)" class="btn btn-warning">Unirse al juego</button>-->
+                    <a role="button" class="btn btn-primary" data-toggle="modal" href="#ModalD" (click)="guardarSala(sala.nombreSala)">Unirse al juego</a>
+                  </td>
                 </ng-container>
-                <td align="center">{{sala.Estado}}</td>
-                <td align="center">{{sala.numJugadores}} / 16</td>
-                <td> 
-                  <!--<button (click)="ingresarSala(sala.nombreSala)" class="btn btn-warning">Unirse al juego</button>-->
-                  <a role="button" class="btn btn-primary" data-toggle="modal" href="#ModalD" (click)="guardarSala(sala.nombreSala)">Unirse al juego</a>
-                </td>
               </tr>
             </tbody>
             </table>
