@@ -113,6 +113,17 @@ export class SocketService {
     });
     return observable;
   }
+  getConteo(){
+    let observable = new Observable(observer => {
+      //this.socket.emit('Salas');
+      this.socket.on('Conteo', function(number){
+        //console.log("socket " + salas);
+        observer.next(number);
+      });
+
+    });
+    return observable;
+  }
 
   getNumerosBaraja(){
     let observable = new Observable(observer => {

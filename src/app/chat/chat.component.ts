@@ -76,9 +76,18 @@ export class ChatComponent implements OnInit {
         text: "Bienvenido",
         self: false
       }];
+      data="Reiniciando Partida";
     }
     this.str = "Loteria: "+ data;
       this.notificaciones.push({ //Holi
+        text: this.str,
+        self: false
+      })
+  }
+
+  cacharConteo(data){
+    this.str = data;
+      this.notificaciones.push({
         text: this.str,
         self: false
       })
@@ -95,6 +104,9 @@ export class ChatComponent implements OnInit {
 
     this.socketService.getEstado().subscribe(response => {
       this.cacharEstado(response);
+    });
+    this.socketService.getConteo().subscribe(response => {
+      this.cacharConteo(response);
     });
 
   }
