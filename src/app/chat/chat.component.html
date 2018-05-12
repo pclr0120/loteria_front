@@ -1,10 +1,16 @@
 <div class="chatbox"> 
+    <div class="NombreSala" align="center">
+      Sala: {{this.NombreSala}}
+    </div>
+</div>
+<div class="chatbox"> 
   <div class="notificaciones">
     <div id="show" *ngFor="let notificacion of notificaciones" [class.right]="notificacion.self">
       {{notificacion.text}}
     </div>
   </div>
-  <hr>
+</div>
+<div class="chatbox"> 
   <div class="messages">
     <div id="show" *ngFor="let message of messages" [class.right]="message.self">
       {{message.text}}

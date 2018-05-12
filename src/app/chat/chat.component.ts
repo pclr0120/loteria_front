@@ -17,6 +17,7 @@ export class ChatComponent implements OnInit {
   str: string;
   replyMessage = "";
   time = new Date();
+  NombreSala = "";
 
   //arreglo de mensajes de ejemplo para mostrar 
   messages = [{
@@ -109,6 +110,8 @@ export class ChatComponent implements OnInit {
       this.cacharConteo(response);
     });
 
+    //Nombre de la sala
+    this.NombreSala = JSON.parse(localStorage.getItem('nombreSala'))
   }
 
   render(data) {

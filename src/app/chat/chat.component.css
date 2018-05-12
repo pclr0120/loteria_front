@@ -4,7 +4,6 @@
     font-weight: bold;
 }
 .chatbox{
-    border: 5px solid black;
     border-radius: 2%; 
     background-image: url(../../assets/Resources/fondo_chat.jpg);
     background-repeat: no-repeat;
@@ -15,18 +14,23 @@
     border: 2px solid #ccc;
     padding: 16px; 
 }
+.NombreSala{
+    text-shadow: 0.5px 0.5px 1px black;
+    font-size: 15px;
+    overflow: auto;
+}
 .notificaciones{
     text-shadow: 0.5px 0.5px 1px blue;
     font-size: 15px;
     font-style: oblique;
-    height:250px;
+    height:100px;
     overflow: auto;
 }
 .messages{
     text-shadow: 0.5px 0.5px 1px grey;
     font-size: 15px;
     font-style: oblique;
-    height:250px;
+    height:200px;
     overflow: auto;
 }
 .input-container{
