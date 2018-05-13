@@ -12,7 +12,7 @@ export class ServiciologinService {
   
 
   getIdentity() {
-    let identity = JSON.parse(localStorage.getItem('Identity'))
+    let identity = JSON.parse(localStorage.getItem('identity'))
     if (identity != "Undefined" ) {
       this.identity = identity;
     }

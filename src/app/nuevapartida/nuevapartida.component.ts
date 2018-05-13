@@ -48,7 +48,7 @@ constructor(private router: Router, private SalasService: SalasService, private 
   }
   ngOnInit() {
     //ESTO SE VA A QUITAR ES PARA PRUEBAS NADA MAS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-    localStorage.setItem('identity',JSON.stringify('adrian'));
+    //localStorage.setItem('identity',JSON.stringify('adrian'));
 
 
     this.RegistroNuevaPartidaForm = this.formBuilder.group(

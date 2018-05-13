@@ -79,7 +79,8 @@ export class PrincipalComponent implements OnInit {
     this.LoginService.signup(this.usuario)
       . subscribe(response => {
         this.identity = response
-        localStorage.setItem('Identity', JSON.stringify(this.identity))
+        console.log(this.identity);
+        localStorage.setItem('identity', JSON.stringify(this.identity))
         if (this.identity != "Undefined") {
 
           this.router.navigate(['/lobby']);

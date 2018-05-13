@@ -57,7 +57,7 @@ export class CartaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('identity')));
+    this.socketService.conexionEscucha(JSON.parse(localStorage.getItem('nombreSala')));
     this.socketService.getEstado().subscribe(response => {
       this.cacharEstado(response);
       console.log(response);

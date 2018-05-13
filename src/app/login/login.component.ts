@@ -92,7 +92,7 @@ export class LoginComponent implements OnInit {
     this.LoginService.signup(this.usuario)
       .subscribe(response => {
         this.identity = response
-        localStorage.setItem('Identity', JSON.stringify(this.identity))
+        localStorage.setItem('identity', JSON.stringify(this.identity))
         if (this.identity != "Undefined") {
           //Si hay logeado se va a salas
       //    this.router.navigate(['/lobby'])
