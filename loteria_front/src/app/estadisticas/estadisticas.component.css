@@ -1,0 +1,13 @@
+
+
+.full {
+    background: url("../../assets/Resources/fondo_lobby.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+    color: white;
+    min-height: 850px;
+   
+}

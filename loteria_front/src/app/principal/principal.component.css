@@ -1,0 +1,37 @@
+.login_form_lbl {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.login_form_txt {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 0px;
+}
+
+.btn_log {
+    margin-left: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #db9600;
+    color: white;
+    font-size: 12pt;
+    border: 3px solid white;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    width: 123px;
+    height: 37px;
+}
+
+.space {
+    margin-left: 50px;
+}
+
+.usuario {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 15pt;
+    font-weight: bold;
+}

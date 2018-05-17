@@ -1,0 +1,26 @@
+
+
+<div class="container-fluid full">
+      <div class="container-fluid">
+  
+      <div class="col-sm-10">
+   
+  
+
+  
+ 
+    <div style="display: block">
+        <h1>Ganadores Llenas</h1>
+
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+
+</div>

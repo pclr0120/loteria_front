@@ -1,0 +1,27 @@
+
+
+<div class="container-fluid full">
+    <div class="row">
+        <div class="container-fluid">
+    
+
+  <div class="container" ALIGN="center">
+      <h1>JUGADAS</h1>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <div style="display: block">
+            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+          </div>
+          <div class="col-md-2">
+            <br>
+            <button type="button" class="btn btn-success btn-block">Actualizar</button>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  </div>
+  </div>
