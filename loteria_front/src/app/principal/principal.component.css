@@ -10,6 +10,9 @@
     -webkit-border-radius: 6px;
     border-radius: 6px;
     border: 0px;
+    padding-top: 7px;
+    width: 200px;
+    height: 26px;
 }
 
 .btn_log {
@@ -35,3 +38,4 @@
     font-size: 15pt;
     font-weight: bold;
 }
+

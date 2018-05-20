@@ -18,7 +18,6 @@ export class PrincipalComponent implements OnInit {
   }
   //Registro
   LoginForm: FormGroup;
-  PayForm: FormGroup;
   usuario: any;
   public identity;
   public datos;
@@ -26,7 +25,7 @@ export class PrincipalComponent implements OnInit {
 
   public didPaypalScriptLoad: boolean = false;
   public loading: boolean = true;
-  cantidad;
+  cantidad = 100;
 
 
   onValueChanged(data?: any) {
@@ -59,6 +58,9 @@ export class PrincipalComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.identity = JSON.parse(localStorage.getItem('identity'))
+    this.datos = JSON.parse(localStorage.getItem('Identity2'))
+    console.log(this.datos)
     this.LoginForm = this.formBuilder.group(
       {
         'userName': ['', [
@@ -73,13 +75,6 @@ export class PrincipalComponent implements OnInit {
     )
     this.LoginForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
-    this.PayForm = this.formBuilder.group(
-      {
-        'comprar': ['Comprar...', [
-          Validators.required,
-        ]]
-      }
-    )
   }
 
   iniciarsesion() {
@@ -87,16 +82,21 @@ export class PrincipalComponent implements OnInit {
     this.LoginService.signup(this.usuario)
       . subscribe(response => {
         this.identity = response
-        localStorage.setItem('Identity', JSON.stringify(this.identity))
+        //console.log(this.identity);
+        localStorage.setItem('identity', JSON.stringify(this.identity.usuario.userName));
+        localStorage.setItem('Identity2', JSON.stringify(this.identity));
+        localStorage.setItem('idUsuario', JSON.stringify(this.identity.usuario.idUsuario));
+        
+        
+        //console.log(localStorage.getItem('identity'));
         if (this.identity != "Undefined") {
-
+          this.datos = JSON.parse(localStorage.getItem('identity')); 
+        //  this.estadoLog = 1;
+          document.getElementById('paypal-button').style.display = "block";
           this.router.navigate(['/lobby']);
 
           console.log("Holi");
-          this.datos =this.LoginService.getIdentity(); 
-          this.estadoLog = 1;
-          document.getElementById('paypal-button').style.display = "block";
-          document.getElementById('comprar').style.display = "block";
+         
         } 
         else
         {
@@ -117,16 +117,13 @@ export class PrincipalComponent implements OnInit {
   }
 
   cerrarSesion(){
-    localStorage.setItem('Identity', '');
-    this.estadoLog = 0;
-    this.router.navigate(['/']);
-    document.getElementById('paypal-button').style.display = "none";
-    document.getElementById('comprar').style.display = "none";
-  }
+    localStorage.clear();
+    this.identity = null;
+    this.router.navigate(['/'])
 
-  pagar() {
-    this.cantidad = this.PayForm.get('comprar').value;
-    console.log(this.cantidad);
+
+    this.estadoLog = 0;
+    document.getElementById('paypal-button').style.display = "none";
   }
 
   public paypalConfig: any = {
@@ -137,7 +134,6 @@ export class PrincipalComponent implements OnInit {
     },
     commit: true,
     payment: (data, actions) => {
-      this.pagar();
       return actions.payment.create({
         payment: {
           transactions: [

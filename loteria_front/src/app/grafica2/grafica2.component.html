@@ -9,9 +9,9 @@
 
       <div style="width: 80%;" *ngIf="barChartData">
         
-        <h1>Cartas mas ganadoras de llenas</h1>
+        <h1>Carta que mas gana llenas</h1>
 
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+        <canvas baseChart [datasets]="barChartData"  [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
           [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>

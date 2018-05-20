@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { GraficasService } from '../servicios/graficas.service';
 import { forEach } from '@angular/router/src/utils/collection';
 @Component({
-  selector: 'app-grafica1',
-  templateUrl: './grafica1.component.html',
-  styleUrls: ['./grafica1.component.css']
+  selector: 'app-grafica2',
+  templateUrl: './grafica2.component.html',
+  styleUrls: ['./grafica2.component.css']
 })
-export class Grafica1Component implements OnInit {
+export class Grafica2Component implements OnInit {
   public nombres: any = []
   public numer: any = []
 public barChartsOptions: any 
@@ -16,15 +16,14 @@ public barChartsOptions: any
   public barChartLegend: boolean 
 
   public barChartData: any[] 
-
-
+  
   constructor(private grafica: GraficasService) {
     this.grafica.getGrafica2().subscribe(res => {
       for (var _i = 0; _i < res.length; _i++) {
         let numero = res[_i].numero;
-        let id = res[_i].idCarta;
+        let nombre = res[_i].idCarta;
         this.numer[_i] = Number(numero);
-        this.nombres[_i] = id;
+        this.nombres[_i] = nombre;
       }
       this.barChartsOptions = {
         scaleShowVerticalLines: false,
@@ -38,10 +37,11 @@ public barChartsOptions: any
       
     })
     
+    
   }
 
   ngOnInit() {
- 
+   
   }
 
 }

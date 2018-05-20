@@ -19,14 +19,17 @@ export class LobbyComponent implements OnInit {
   public cartasSelec = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //HOLIIIIII
   public sala;
   public idSala;
-
+  private identity;
   constructor(private router: Router, 
     private socketService:SocketService,
     private salasService:SalasService) { 
+      this.identity = JSON.parse(localStorage.getItem('identity'))
+      
     
   }
   ngOnInit() {
     //ESTO SE TIENE QUE QUITAR NADA MAS ESTA PARA PRUEBAS
+    this.identity = JSON.parse(localStorage.getItem('identity')),
     this.socketService.addUser("","");
     this.socketService.getSalas().subscribe(response => {
       this.Salas = response;

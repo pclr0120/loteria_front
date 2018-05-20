@@ -33,6 +33,10 @@ import { GraficasService } from './servicios/graficas.service';
 import { RouterModule, Routes}  from '@angular/router';
 import { GanadoresService } from './servicios/ganadores.service';
 import { Grafica1Component } from './grafica1/grafica1.component';
+import { Grafica2Component } from './grafica2/grafica2.component';
+import { Grafica3Component } from './grafica3/grafica3.component';
+import { Grafica4Component } from './grafica4/grafica4.component';
+import { Grafica5Component } from './grafica5/grafica5.component';
 
 
 export const appRoutes: Routes = [
@@ -42,8 +46,13 @@ export const appRoutes: Routes = [
   { path:'nuevapartida' ,component : NuevapartidaComponent },
   { path:'partida' ,component : PartidaComponent },
   { path:'estadisticas' ,component : EstadisticasComponent },
-  { path:'grafica1' ,component : Grafica1Component },
-  { path:'jugadas' ,component : JugadasComponent }
+  { path:'grafica2' ,component : Grafica2Component },
+  { path:'grafica3', component : Grafica3Component},
+  { path:'grafica4', component: Grafica4Component},
+  { path:'grafica5', component: Grafica5Component},
+  
+  {path : 'jugadas/:id', component: JugadasComponent},
+  
 
 ];
 
@@ -62,7 +71,11 @@ export const appRoutes: Routes = [
     ChatComponent,
     JugadasComponent,
     EstadisticasComponent,
-    Grafica1Component
+    Grafica1Component,
+    Grafica2Component,
+    Grafica3Component,
+    Grafica4Component,
+    Grafica5Component
   ],
   imports: [
     BrowserModule, FormsModule,

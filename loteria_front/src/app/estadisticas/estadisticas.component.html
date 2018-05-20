@@ -1,31 +1,52 @@
+<form [formGroup]="estadisticasform">
+  <div class="container-fluid full">
+    <div class="row">
+      <div class="container-fluid">
 
-    <div class="container-fluid full">
-            <div class="row">
-                <div class="container-fluid">
-            
-                <div class="col-sm-10">
-              <br>
-              <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block" (click)="grafica()">Ganadores Llenas</button>
-              </div>
-              <br>
-              <br>
-              <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block" (click)="jugadas()">Jugadas</button>
-              </div>
-              <br>
-              <br>
-              
-              <div class="col-md-2">
-                <button type="button" class="btn btn-primary btn-block">Apuestas</button>
-              </div>
-              <br>
-              <br>
-              <div class="col-md-2">
-                  <button type="button" class="btn btn-primary btn-block">Jugadas</button>
-                </div>
-            </div>
-            </div>
-            </div>
+        <div class="col-sm-10">
+          <br>
+          <div class="col-md-2">
+
+            <button type="button" class="btn btn-primary btn-block" (click)="grafica()">Ganadores de Llenas</button>
+
           </div>
-      
+          <br>
+          <br>
+          <div class="col-md-2">
+            Seleccione el premio para ver los mas ganadores
+            <select formControlName="jugadas">
+              <option value="1">Chorro</option>
+              <option value="2">Centro</option>
+              <option value="3">Cuatro esquinas</option>
+              <option value="4">Llenas</option>
+            </select>
+            <button type="button" class="btn btn-primary btn-block" (click)="jugadas()">ver</button>
+          </div>
+          <br>
+          <br>
+
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-block" (click)="grafica2()">Carta mas ganadora de llenas</button>
+          </div>
+          <br>
+          <br>
+
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-block" (click)="grafica3()">Jugadas hechas</button>
+          </div>
+          <br>
+          <br>
+
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-block" (click)="grafica4()">Cartas jugadas</button>
+          </div>
+          <br>
+          <br>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-block" (click)="grafica5()">Partidas por sala</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

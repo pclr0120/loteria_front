@@ -1,0 +1,26 @@
+h1{
+    color: white;
+  }
+  h3{
+    color: #34495E  ;
+  }
+  
+  .full {
+    background: url("../../assets/Resources/fondo_lobby.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height:100%;
+    min-height: 350px;
+   
+  }
+  .container-fluid{
+    max-width: 1700px;
+    background-color: rgba(5, 5, 5, 0);
+    box-shadow:  rgba(0, 0, 0, 0);
+    overflow: hidden;
+    font-family: roboto;
+    position: absolute;
+    font-family: "Arial";
+  }

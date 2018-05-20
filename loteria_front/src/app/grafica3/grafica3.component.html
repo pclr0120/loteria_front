@@ -1,0 +1,10 @@
+<div class="container-fluid full">
+    <div class="container-fluid">
+      <div class="col-sm-10">
+        <div style="width: 80%;" *ngIf="barChartData">         
+          <h1>HISTORIAL DE VECES QUE HA GANADO CADA PREMIO</h1>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+            [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
