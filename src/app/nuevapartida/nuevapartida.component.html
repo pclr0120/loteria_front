@@ -18,15 +18,15 @@
             Es obligatorio el nombre de partida.
           </p>
           <br>
-            <input checked type="radio" class="form-check-input" formControlName="modo" value="1" style=" margin-top: 16px; margin-left: 6px;">
+            <input type="radio" class="form-check-input" formControlName="modo" value="1" style=" margin-top: 16px; margin-left: 6px;">
             <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Privada</p>
-            <input type="radio" class="form-check-input" formControlName="modo" value="2" style=" margin-top: 16px; margin-left: 6px;">
+            <input [checked]="true" type="radio"  class="form-check-input" formControlName="modo" value="2" style=" margin-top: 16px; margin-left: 6px;">
             <p style=" margin-left: 20px; margin-top: 9px; margin-bottom: 0px;">Publica</p>
             <br>
          
           <input class="registro"type="submit" type="number"min="0" max="20" placeholder="Numero de jugadores" formControlName="numeroJugadores" style=" width: 70%; ">
           <br>
-          <input class="registro" type="text" placeholder="Contraseña de partida" formControlName="contra" style=" width: 70%; ">
+          <input *ngIf= "this.RegistroNuevaPartidaForm.get('modo').value == 1" class="registro" type="password" placeholder="Contraseña de partida" formControlName="contra" style=" width: 70%; ">
           <br>
 
 

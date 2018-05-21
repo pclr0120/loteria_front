@@ -47,9 +47,6 @@ constructor(private router: Router, private SalasService: SalasService, private 
     }
   }
   ngOnInit() {
-    //ESTO SE VA A QUITAR ES PARA PRUEBAS NADA MAS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-    //localStorage.setItem('identity',JSON.stringify('adrian'));
-
 
     this.RegistroNuevaPartidaForm = this.formBuilder.group(
       {
@@ -61,8 +58,8 @@ constructor(private router: Router, private SalasService: SalasService, private 
 
         idSala: '',
         modo: ['',Validators.required],
-        contra: ['',Validators.required],
-        numeroJugadores:'',
+        contra:'',
+        numeroJugadores:['',Validators.required],
         estado: '',
 
 
@@ -97,16 +94,30 @@ constructor(private router: Router, private SalasService: SalasService, private 
   }
 
   GuardarSala() {
-    const guardarsala = {
-    
-      idSala: Number(this.id) + Number(1),
-      nombreSala: this.RegistroNuevaPartidaForm.get('nombreSala').value,
-      modo: this.RegistroNuevaPartidaForm.get('modo').value,
-      contra: this.RegistroNuevaPartidaForm.get('contra').value,
-      numeroJugadores: this.RegistroNuevaPartidaForm.get('numeroJugadores').value,
-      estado: 'A',
+    if(this.RegistroNuevaPartidaForm.get('modo').value== 1){
+      const guardarsala = {
+        
+          idSala: Number(this.id) + Number(1),
+          nombreSala: this.RegistroNuevaPartidaForm.get('nombreSala').value,
+          modo: this.RegistroNuevaPartidaForm.get('modo').value,
+          contra: this.RegistroNuevaPartidaForm.get('contra').value,
+          numeroJugadores: this.RegistroNuevaPartidaForm.get('numeroJugadores').value,
+          estado: 'A',
+        }
+        return guardarsala;
+
+    }else{
+      const guardarsala = {
+        
+          idSala: Number(this.id) + Number(1),
+          nombreSala: this.RegistroNuevaPartidaForm.get('nombreSala').value,
+          modo: this.RegistroNuevaPartidaForm.get('modo').value,
+          numeroJugadores: this.RegistroNuevaPartidaForm.get('numeroJugadores').value,
+          estado: 'A',
+        }
+        return guardarsala;
     }
-    return guardarsala;
+    
   }
 
   partida() {
