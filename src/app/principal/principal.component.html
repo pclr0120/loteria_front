@@ -2,9 +2,9 @@
   @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 </style>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img src="../assets/Resources/LoteriaOnline_white.png" alt="Lotería Online" style=" width: 90px; ">
+<nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand mr-auto" href="#">
+    <img src="../assets/Resources/LoteriaOnline_white.png" alt="Lotería Online" style=" width: 90px;margin-right: 70px;">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -13,14 +13,28 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item space">  
-        <img src="../assets/Resources/user.png" alt="Usuario:" style=" width: 20%;margin-top: 8px;" >
-        <label class="usuario" *ngIf="identity" >{{datos.usuario.userName}}</label>
+      <li class="nav-item" *ngIf="identity" >  
+        <img src="../assets/Resources/user.png" alt="Usuario:" style=" width: 40px" >
+        <label class="usuario" *ngIf="identity" style=" margin-top: 14px;margin-right: 20px;">{{datos.usuario.userName}}</label>
+      </li>
+      <li class="nav-item" style=" margin-left: 25px;" *ngIf="identity">
+        <img src="../assets/Resources/coins.png" alt="Usuario:" style="width: 35px ">
+        <label class="usuario" style=" margin-top: 14px;margin-right: 20px;">{{datos.usuario.cash}}</label>
       </li>
       <li>
-        <img src="../assets/Resources/coins.png" alt="Usuario:" style=" width: 13%;margin-top: 16px; ">
-        <label class="usuario" *ngIf="identity">{{datos.usuario.cash}}</label>
-        <div id="paypal-button" style="display:none;"></div>
+        <div class="input-group input-group-sm" style=" margin-top: 13px; " [formGroup]="PayForm">
+          <select class="custom-select custom-select-sm" id="comprar" name="comprar" formControlName="comprar" style="display:none">
+            <option selected>Comprar...</option>
+            <option value="100">$100</option>
+            <option value="200">$200</option>
+            <option value="300">$300</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary btn-sm" type="button" style="padding-top: 0">
+              <div id="paypal-button" style="display:none;height: 26px;padding-top: 2px"></div>
+            </button>
+          </div>
+        </div>
       </li>
       <li>
         <form [formGroup]="LoginForm" (ngSubmit)="iniciarsesion()" *ngIf= "!identity" >
@@ -31,16 +45,15 @@
             </tr>
             <tr>
               <td><input class="login_form_txt" type="text" name="userName" formControlName="userName"  ></td>
-              <td style=" padding-left: 14px; "><input class="login_form_txt" type="password"  name="contra" formControlName="contra"></td>
-              <button class="btn_log" (click)="iniciarsesion()"> ENTRAR </button>
+              <td style=" padding-left: 14px;padding-right: 50px;"><input class="login_form_txt" type="password"  name="contra" formControlName="contra"></td>
+              <button class="btn btn-md btn-block btn-outline-warning" (click)="iniciarsesion()" style=" margin-top: -16px; "> ENTRAR </button>
             </tr>
           </table>
         </form>
       </li>
-      <li class="nav-item dropdown" style=" text-align: right;" *ngIf="identity">
-        <button class="btn-succes" (click)="cerrarSesion()"> Cerrar Sesion </button>
-        
-      </li>
-    </ul>    
+    </ul>
+    <div class="" style=" text-align: right;" *ngIf="identity">
+      <button class="btn btn-md btn-block btn-outline-warning" (click)="cerrarSesion()"> Cerrar Sesion </button>
+    </div>
   </div>
 </nav>

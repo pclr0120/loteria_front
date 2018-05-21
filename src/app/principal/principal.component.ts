@@ -16,8 +16,9 @@ export class PrincipalComponent implements OnInit {
   constructor(private LoginService: ServiciologinService, private router: Router, private formBuilder: FormBuilder) { 
  
   }
-  //Registro
+  //Registro 
   LoginForm: FormGroup;
+  PayForm: FormGroup;
   usuario: any;
   public identity;
   public datos;
@@ -25,7 +26,7 @@ export class PrincipalComponent implements OnInit {
 
   public didPaypalScriptLoad: boolean = false;
   public loading: boolean = true;
-  cantidad = 100;
+  cantidad;
 
 
   onValueChanged(data?: any) {
@@ -75,6 +76,13 @@ export class PrincipalComponent implements OnInit {
     )
     this.LoginForm.valueChanges.subscribe(data => this.onValueChanged(data));
     this.onValueChanged();
+    this.PayForm = this.formBuilder.group(
+      {
+        'comprar': ['Comprar...', [
+          Validators.required,
+        ]]
+      }
+    )
   }
 
   iniciarsesion() {
@@ -93,6 +101,7 @@ export class PrincipalComponent implements OnInit {
           this.datos = JSON.parse(localStorage.getItem('identity')); 
         //  this.estadoLog = 1;
           document.getElementById('paypal-button').style.display = "block";
+          document.getElementById('comprar').style.display = "block";
           this.router.navigate(['/lobby']);
 
           console.log("Holi");
@@ -124,6 +133,12 @@ export class PrincipalComponent implements OnInit {
 
     this.estadoLog = 0;
     document.getElementById('paypal-button').style.display = "none";
+    document.getElementById('comprar').style.display = "none";
+  }
+
+  pagar() {
+    this.cantidad = this.PayForm.get('comprar').value;
+    console.log(this.cantidad);
   }
 
   public paypalConfig: any = {
@@ -134,6 +149,7 @@ export class PrincipalComponent implements OnInit {
     },
     commit: true,
     payment: (data, actions) => {
+      this.pagar();
       return actions.payment.create({
         payment: {
           transactions: [
