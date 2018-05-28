@@ -89,6 +89,7 @@ export class PrincipalComponent implements OnInit {
     this.usuario = this.GuardarUsuario();
     this.LoginService.signup(this.usuario)
       . subscribe(response => {
+        console.log(response);
         this.identity = response
         //console.log(this.identity);
         localStorage.setItem('identity', JSON.stringify(this.identity.usuario.userName));
