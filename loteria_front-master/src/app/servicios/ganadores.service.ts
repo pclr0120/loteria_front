@@ -5,7 +5,9 @@ import 'rxjs/Rx';
 export class GanadoresService {
 
   constructor(private http:Http) { }
-  presURL = 'http://localhost:4000/ganadores';
+ // presURL = 'http://localhost:4000/ganadores';
+  presURL = 'http://ec2-18-188-74-192.us-east-2.compute.amazonaws.com:3000/ganadores';
+
 
   
 

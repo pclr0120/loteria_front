@@ -6,8 +6,9 @@ import * as io from 'socket.io-client';
 
 @Injectable()
 export class SocketService {
+  //private url = 'http://localhost:8080';
+  private url = 'http://ec2-18-217-208-255.us-east-2.compute.amazonaws.com:4000';
 
-  private url = 'http://localhost:8080';
   private socket;
 
   constructor() {

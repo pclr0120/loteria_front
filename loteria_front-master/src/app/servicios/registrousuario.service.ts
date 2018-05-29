@@ -5,8 +5,8 @@ import 'rxjs/Rx';
 export class RegistrousuarioService {
 
   constructor(private http:Http) { }
-  presURL = 'http://localhost:4000/usuarios';
-
+ // presURL = 'http://localhost:4000/usuarios';
+ presURL = 'http://ec2-18-188-74-192.us-east-2.compute.amazonaws.com:3000/usuarios';
   getUser(){
     return this.http.get(this.presURL).map(res => res.json())
     .toPromise()
@@ -14,12 +14,14 @@ export class RegistrousuarioService {
   }
 
   getObtenerNumUser(){
-    return this.http.get('http://localhost:4000/usuariosContar')
+    //return this.http.get('http://localhost:4000/usuariosContar')
+    return this.http.get('http://ec2-18-188-74-192.us-east-2.compute.amazonaws.com:3000/usuariosContar')
     .map(res => res.json());
   }
 
   updateCash(idUsuario: any, cash: any) {
-    var URL = 'http://localhost:4000/updatecash';
+    //var URL = 'http://localhost:4000/updatecash';
+    var URL = 'http://ec2-18-188-74-192.us-east-2.compute.amazonaws.com:3000/updatecash';
     const newpres = {
       "idUsuario": idUsuario,
       "cash": cash

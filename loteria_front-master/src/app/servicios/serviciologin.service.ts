@@ -27,7 +27,9 @@ export class ServiciologinService {
   signup(usuario_to_login) {
     const newpres = JSON.stringify(usuario_to_login);
     const headers = new Headers({ 'Content-Type': 'Application/json' });
-    return this.http.post('http://localhost:4000/usuario/login', newpres, { headers })
+    //return this.http.post('http://localhost:4000/usuario/login', newpres, { headers })
+    return this.http.post('http://ec2-18-188-74-192.us-east-2.compute.amazonaws.com:3000/usuario/login', newpres, { headers })
+
       .map(res =>
         res.json()
       )
