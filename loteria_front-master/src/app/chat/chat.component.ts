@@ -77,7 +77,7 @@ export class ChatComponent implements OnInit {
 
   cacharEstado(data) {
     console.log(data)
-    if (data == "Listo Para Jugar"){
+    if (data == "Listo para Jugar"){
        //IR GUARDANDO EN LA BASE DE DATOS CUANDO INICIA CADA PARTIDA
        this.partidaService.getObtenerNumPartida().subscribe(
         response => {
@@ -90,20 +90,7 @@ export class ChatComponent implements OnInit {
       
     }
     if (data == "Iniciando Partida") {
-      //IR GUARDANDO EN LA BASE DE DATOS CUANDO INICIA CADA PARTIDA
-      this.partidaService.getObtenerNumPartida().subscribe(
-        response => {
-          this.id = response[0].idPartida;
-          localStorage.setItem('idpartida',JSON.stringify(this.id));
-          
-          this.partida = this.savepartida();
-          this.partidaService.postNuevaPartida(this.partida).subscribe(newpres => {
-          })
-        })
-      
-
-
-
+     
       this.notificaciones = [{//Holi//Holi
         text: "Notificaciones",
         self: false
