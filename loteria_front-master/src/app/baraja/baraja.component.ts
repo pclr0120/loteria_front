@@ -4,7 +4,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { ajaxGetJSON } from 'rxjs/observable/dom/AjaxObservable';
 import * as io from "socket.io-client";
 import { SocketService } from '../servicios/socket.service';
-var socket = io.connect('http://localhost:8080', {'forceNew':true});
+//var socket = io.connect('http://localhost:8080', {'forceNew':true});
+var socket = io.connect('http://ec2-18-217-208-255.us-east-2.compute.amazonaws.com:4000', {'forceNew':true});
 
 @Component({
   selector: 'app-baraja',
